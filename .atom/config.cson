@@ -7,6 +7,7 @@
   core:
     telemetryConsent: "no"
   editor:
+    fontSize: 15
     scrollPastEnd: true
   "exception-reporting":
     userId: "b783c150-2d73-4b36-b72a-a096a2755a30"
