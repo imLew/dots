@@ -1,8 +1,8 @@
 #!/bin/bash
 #call git checkout with git co
 
-branch=$1
+branch=$*
 
-test -z $branch && echo "branch required." 1>&2 && exit 1
+#test -z $branch && echo "branch required." 1>&2 && exit 1
 
 git checkout $branch
