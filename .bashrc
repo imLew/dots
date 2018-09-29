@@ -2,6 +2,7 @@ alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
 alias la='ls -Alh --color'
+alias ll='ls -lh --color'
 
 #alias python to anaconda python
 #alias python="$HOME/anaconda3/bin/python"
@@ -11,3 +12,6 @@ alias la='ls -Alh --color'
 #color bash
 export PS1="\[\033[38;5;28m\]\u\[$(tput sgr0)\]\[\033[38;5;15m\]@\[$(tput sgr0)\]\[\033[38;5;58m\]\H\[$(tput sgr0)\]\[\033[38;5;15m\]:\[$(tput sgr0)\]\[\033[38;5;178m\]\t\[$(tput sgr0)\]\[\033[38;5;15m\]:\[$(tput sgr0)\]\[\033[38;5;46m\]\w\[$(tput sgr0)\]\[\033[38;5;15m\]\n\\$\[$(tput sgr0)\]"
 echo -e "\n DIT IS $PWD!!!"
+
+# added by Anaconda3 installer
+export PATH="/home/dpenguin/anaconda3/bin:$PATH"
