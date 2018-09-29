@@ -1,8 +1,8 @@
 '.source.python':
   'debug':
     'prefix': 'logging debug'
-    'body': 'log.debug("""$1"""${2:.format($3)})'
+    'body': 'log.debug(f"$1")'
 
   'log.info':
     'prefix': 'logging info'
-    'body': 'log.info("""$1"""${2:.format($3)})'
+    'body': 'log.info(f"$1")'
