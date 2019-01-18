@@ -1,3 +1,4 @@
+M
 alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
@@ -14,4 +15,4 @@ export PS1="\[\033[38;5;28m\]\u\[$(tput sgr0)\]\[\033[38;5;15m\]@\[$(tput sgr0)\
 echo -e "\n DIT IS $PWD!!!"
 
 # added by Anaconda3 installer
-export PATH="/home/dpenguin/anaconda3/bin:$PATH"
+export PATH="$HOME/anaconda3/bin:$PATH"
