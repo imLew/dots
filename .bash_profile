@@ -2,4 +2,4 @@
 # ~/.bash_profile
 #
 [[ -f ~/.bashrc ]] && . ~/.bashrc
-export PATH=$PATH:$HOME/.gitcommands/
+#export PATH=$PATH:$HOME/.gitcommands/
