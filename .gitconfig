@@ -3,3 +3,11 @@
 [user]
 	email = lewytsch@protonmail.com
 	name = lew
+[grep]
+	lineNumber = true
+[alias]
+	co = checkout
+    c = commit
+    b = branch
+    s = status
+    d = diff
