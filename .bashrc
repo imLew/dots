@@ -14,8 +14,7 @@ export PS1="\[\033[38;5;28m\]\u\[$(tput sgr0)\]\[\033[38;5;15m\]@\[$(tput sgr0)\
 echo -e "\n DIT IS $PWD!!!"
 
 # added by Anaconda3 installer
-<<<<<<< HEAD
-export PATH="$HOME/anaconda3/bin:$PATH"
+# export PATH="$HOME/anaconda3/bin:$PATH"
 
 mkcd () {
 	mkdir "$1"
@@ -24,8 +23,7 @@ mkcd () {
 . /home/workingman/anaconda3/etc/profile.d/conda.sh
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
-=======
-export PATH="/home/dpenguin/anaconda3/bin:$PATH"
+
 # added by Anaconda3 5.3.1 installer
 # >>> conda init >>>
 # !! Contents within this block are managed by 'conda init' !!
@@ -43,4 +41,3 @@ fi
 unset __conda_setup
 # <<< conda init <<<
 exec fish
->>>>>>> lew_master
