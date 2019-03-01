@@ -1,4 +1,3 @@
-M
 alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
@@ -16,3 +15,11 @@ echo -e "\n DIT IS $PWD!!!"
 
 # added by Anaconda3 installer
 export PATH="$HOME/anaconda3/bin:$PATH"
+
+mkcd () {
+	mkdir "$1"
+	cd "$1"
+}
+. /home/workingman/anaconda3/etc/profile.d/conda.sh
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
