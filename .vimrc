@@ -1,7 +1,31 @@
-" color scheme from vimcolors.com
-colorscheme zenburn
+set number
+
+" Only do this part when compiled with support for autocommands.
+if has("autocmd")
+    " Use filetype detection and file-based automatic indenting.
+    filetype plugin indent on
+
+    " Use actual tab chars in Makefiles.
+    autocmd FileType make set tabstop=8 shiftwidth=8 softtabstop=0 noexpandtab
+endif
+
+" For everything else, use a tab width of 4 space chars.
+set tabstop=4       " The width of a TAB is set to 4.
+                    " Still it is a \t. It is just that
+                    " Vim will interpret it to be having
+                    " a width of 4.
+set shiftwidth=4    " Indents will have a width of 4.
+set softtabstop=4   " Sets the number of columns for a TAB.
+set expandtab       " Expand TABs to spaces.
+
+let &colorcolumn=join(range(81,999),",")
+highlight ColorColumn ctermbg=235 guibg=#2c2d27
+
+colorscheme ambient
+
 
 " turn on line numbers
+>>>>>>> c8f75d3723c05f35fbc9ebaa8c542e136a1df586
 set number
 
 " only do this part when compiled with support for autocommands.
@@ -33,7 +57,7 @@ highlight ColorColumn ctermbg=235 guibg=#2c2d27
 "    \ set softtabstop=2
 "    \ set shiftwidth=2
 
- set encoding=utf-8 
+ set encoding=utf-8
 
 " my keybinds
 " switch tabs with F7/F8

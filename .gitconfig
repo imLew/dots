@@ -1,8 +1,8 @@
 [core]
 	editor = vim
 [user]
-	email = lewytsch@protonmail.com
-	name = lew
+	email = n.zaki@rasa.com
+	name = Nikolai
 [grep]
 	lineNumber = true
 [alias]
@@ -11,3 +11,9 @@
     b = branch
     s = status
     d = diff
+[mergetool]
+	prompt = false
+[color]
+	ui = auto
+[alias]
+   vimdiff=difftol -y -t vimdiff -R
