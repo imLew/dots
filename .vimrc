@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 set number
 
 " Only do this part when compiled with support for autocommands.
@@ -21,9 +22,20 @@ set expandtab       " Expand TABs to spaces.
 let &colorcolumn=join(range(81,999),",")
 highlight ColorColumn ctermbg=235 guibg=#2c2d27
 
+||||||| merged common ancestors
+=======
+" color scheme from vimcolors.com
+>>>>>>> c8f75d3723c05f35fbc9ebaa8c542e136a1df586
 colorscheme ambient
+<<<<<<< HEAD
 
+||||||| merged common ancestors
+=======
+
+" turn on line numbers
+>>>>>>> c8f75d3723c05f35fbc9ebaa8c542e136a1df586
 set number
+
 " only do this part when compiled with support for autocommands.
 " Use filetype detection and file-based automatic indenting.
 filetype plugin indent on
@@ -42,15 +54,23 @@ set shiftwidth=4    " Indents will have a width of 4.
 set softtabstop=4   " Sets the number of columns for a TAB.
 set expandtab       " Expand TABs to spaces.
 
+
 " color past column 80 - ruler
 let &colorcolumn=join(range(81,999),",")
 highlight ColorColumn ctermbg=235 guibg=#2c2d27
 
+
+" my keybinds
 " switch tabs with F7/F8
 imap <F7> <Esc>:tabp<Return>
 imap <F8> <Esc>:tabn<Return>
 nmap <F7> :tabp<Return>
 nmap <F8> :tabn<Return>
+
+" add newline without entering insert mode
+nnoremap o o<Esc>
+nnoremap O O<Esc>
+
 
 " autocomplete suggestions
 :set completeopt=longest,menuone
