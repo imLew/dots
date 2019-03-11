@@ -41,4 +41,4 @@ fi
 unset __conda_setup
 # <<< conda init <<<
 . /home/workingman/anaconda3/etc/profile.d/conda.sh
-exec fish
+#exec fish
