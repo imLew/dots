@@ -6,6 +6,7 @@
 [grep]
 	lineNumber = true
 [alias]
+	hist = log --pretty=format:'%h %ad | %s%d [%an]' --graph
 	co = checkout
     c = commit
     b = branch
@@ -17,3 +18,5 @@
 	ui = auto
 [alias]
    vimdiff=difftol -y -t vimdiff -R
+[pager]
+	branch = false

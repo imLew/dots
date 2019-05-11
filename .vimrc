@@ -1,18 +1,11 @@
 colorscheme zenburn
 
 " turn on line numbers
-set number
+set number relativenumber
 
-" only do this part when compiled with support for autocommands.
-" Use filetype detection and file-based automatic indenting.
 filetype plugin indent on
-if has("autocmd")
 
-    " Use actual tab chars in Makefiles.
-    autocmd FileType make set tabstop=8 shiftwidth=8 softtabstop=0 noexpandtab
-endif
-"au BufNewFile,BufRead *.py
-" For everything else, use a tab width of 4 space chars.
+"By default use a tab width of 4 space chars.
 set tabstop=4       " The width of a TAB is set to 4.
                     " Still it is a \t. It is just that
                     " Vim will interpret it to be having
@@ -21,6 +14,12 @@ set shiftwidth=4    " Indents will have a width of 4.
 set softtabstop=4   " Sets the number of columns for a TAB.
 set expandtab       " Expand TABs to spaces.
 set textwidth=80
+
+if has("autocmd")
+    " Use actual tab chars in Makefiles.
+    autocmd FileType make set tabstop=8 shiftwidth=8 softtabstop=0 noexpandtab
+endif
+
 " color past column 80 - ruler
 let &colorcolumn=join(range(81,999),",")
 highlight ColorColumn ctermbg=235 guibg=#2c2d27
@@ -35,8 +34,8 @@ nmap <F7> :tabp<Return>
 nmap <F8> :tabn<Return>
 
 " add newline without entering insert mode
-nnoremap o o<Esc>
-nnoremap O O<Esc>
+"nnoremap o o<Esc>
+"nnoremap O O<Esc>
 
 " remap pane/window navigation
 nnoremap <C-j> <C-W>j
@@ -59,12 +58,12 @@ packadd vim-stay
 set viewoptions=cursor,folds,slash,unix
 set viewoptions-=options
 
-"packadd YouCompleteMe
-"let g:ycm_autoclose_preview_window_after_completion=1
-"map <S-Tab>  :YcmCompleter GoToDefinitionElseDeclaration<CR>
+packadd YouCompleteMe
+let g:ycm_autoclose_preview_window_after_completion=1
+map <S-Tab>  :YcmCompleter GoToDefinitionElseDeclaration<CR>
 
 packadd nerdtree
-map <C-s> :NERDTreeToggle<CR>
+map <C-q> :NERDTreeToggle<CR>
 
 packadd vim-gitgutter
 set updatetime=100
