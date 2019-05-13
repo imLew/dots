@@ -120,14 +120,14 @@ fi
 unset __conda_setup
 # <<< conda init <<<
 
-sd () {
+cd () {
     if [ $# -eq 0 ] # check if arguments were given
     then
-        cd
+        builtin cd
     else
         if [ ! -d "$1" ] #if directory doesn't exist create it
             then mkdir -p $1
         fi
-        cd $1
+        builtin cd $1
     fi
 }
