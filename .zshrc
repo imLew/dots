@@ -120,7 +120,7 @@ fi
 unset __conda_setup
 # <<< conda init <<<
 
-cd () {
+sd () {
     if [ $# -eq 0 ] # check if arguments were given
     then
         builtin cd
@@ -131,3 +131,7 @@ cd () {
         builtin cd $1
     fi
 }
+
+# turn on vi mode
+bindkey -v
+export KEYTIMEOUT=1

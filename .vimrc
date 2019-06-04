@@ -1,4 +1,4 @@
-colorscheme zenburn
+colorscheme escuro
 
 " turn on line numbers
 set number relativenumber
@@ -18,6 +18,13 @@ set textwidth=80
 if has("autocmd")
     " Use actual tab chars in Makefiles.
     autocmd FileType make set tabstop=8 shiftwidth=8 softtabstop=0 noexpandtab
+    " highlight during search but not after
+    set is
+    augroup vimrc-incsearch-highlight
+      autocmd!
+      autocmd CmdlineEnter /,\? :set hlsearch
+      autocmd CmdlineLeave /,\? :set nohlsearch
+    augroup END
 endif
 
 " color past column 80 - ruler
@@ -37,12 +44,6 @@ nmap <F8> :tabn<Return>
 "nnoremap o o<Esc>
 "nnoremap O O<Esc>
 
-" remap pane/window navigation
-nnoremap <C-j> <C-W>j
-nnoremap <C-k> <C-W>k
-nnoremap <C-l> <C-W>l
-nnoremap <C-h> <C-W>h
-
 " Enable folding with the spacebar
 nnoremap <space> za
 vnoremap <space> za
@@ -50,6 +51,9 @@ vnoremap <space> za
 source ~/.vim/vimrc-source/visual-at.vim
 
 " plugins (vim native manager)
+packadd vim-tmux-navigator
+packadd vim-surround
+
 packadd SimpylFold
 let g:SimpylFold_docstring_preview=1
 packadd FastFold
