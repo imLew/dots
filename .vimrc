@@ -18,6 +18,9 @@ set textwidth=80
 if has("autocmd")
     " Use actual tab chars in Makefiles.
     autocmd FileType make set tabstop=8 shiftwidth=8 softtabstop=0 noexpandtab
+    autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
+    autocmd FileType markdown setlocal ts=2 sts=2 sw=2 expandtab
+    
     " highlight during search but not after
     set is
     augroup vimrc-incsearch-highlight
@@ -39,6 +42,8 @@ imap <F7> <Esc>:tabp<Return>
 imap <F8> <Esc>:tabn<Return>
 nmap <F7> :tabp<Return>
 nmap <F8> :tabn<Return>
+" vim's autocomplete to a reachable key
+imap <C-Space> <C-n>
 
 " add newline without entering insert mode
 "nnoremap o o<Esc>

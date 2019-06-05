@@ -73,7 +73,7 @@ compleat
 autoload compinit -u
 
 source $ZSH/oh-my-zsh.sh
-#source $HOME/.oh-my-zsh/git-completion.zsh
+source $HOME/.oh-my-zsh/git-completion.zsh
 
 # User configuration
 
