@@ -1,4 +1,0 @@
-#!/bin/bash
-#call git commit with git c
-
-git commit $*
