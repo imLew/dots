@@ -55,6 +55,7 @@ packadd vim-tmux-navigator
 packadd vim-surround
 
 packadd SimpylFold
+packadd vim-airline
 let g:SimpylFold_docstring_preview=1
 packadd FastFold
 let g:fastfold_savehook = 0
