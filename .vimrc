@@ -22,13 +22,15 @@ if has("autocmd")
     autocmd FileType markdown setlocal ts=2 sts=2 sw=2 expandtab
     
     " highlight during search but not after
-    set is
     augroup vimrc-incsearch-highlight
       autocmd!
       autocmd CmdlineEnter /,\? :set hlsearch
-      autocmd CmdlineLeave /,\? :set nohlsearch
+      "  autocmd CmdlineLeave /,\? :set nohlsearch
     augroup END
 endif
+
+" highligh while searching
+set is
 
 " color past column 80 - ruler
 let &colorcolumn=join(range(81,999),",")
@@ -53,6 +55,7 @@ imap <C-Space> <C-n>
 nnoremap <space> za
 vnoremap <space> za
 
+nmap <Esc> :set nohlsearch<CR>
 source ~/.vim/vimrc-source/visual-at.vim
 
 " plugins (vim native manager)

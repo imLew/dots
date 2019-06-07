@@ -153,3 +153,8 @@ bindkey -M viins '^[[A' history-beginning-search-backward-end \
 precmd () {
       echo -n -e "\a"
 }
+
+# edit vim commands in vim?
+autoload -U edit-command-line
+zle -N edit-command-line 
+bindkey -M vicmd v edit-command-line
