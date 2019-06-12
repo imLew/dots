@@ -55,10 +55,13 @@ imap <C-Space> <C-n>
 nnoremap <space> za
 vnoremap <space> za
 
-nmap <Esc> :set nohlsearch<CR>
+nnoremap <Esc> :set nohlsearch<CR>
+inoremap <Esc> <Esc>:set nohlsearch<CR>
 source ~/.vim/vimrc-source/visual-at.vim
 
 " plugins (vim native manager)
+packadd julia-vim
+
 packadd vim-tmux-navigator
 packadd vim-surround
 
