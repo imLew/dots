@@ -20,6 +20,7 @@ if has("autocmd")
     autocmd FileType make set tabstop=8 shiftwidth=8 softtabstop=0 noexpandtab
     autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
     autocmd FileType markdown setlocal ts=2 sts=2 sw=2 expandtab
+    autocmd FileType sh setlocal ts=2 sts=2 sw=2 expandtab
     
     " highlight during search but not after
     augroup vimrc-incsearch-highlight
@@ -93,3 +94,4 @@ let g:ale_lint_on_insert_leave = 1
 
 " load help
 silent! helptags ALL
+
