@@ -9,8 +9,13 @@ ZSH_DISABLE_COMPFIX="true"
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
+# Themes to be blacklisted, the ones above the blank line use the rvm-prompt
+# package, the ones below just arent good
 ZSH_BLACKLISTED_THEMES=(
 3den, 
+
+awesomepanda,
+dieter,
 fine-time)
 ZSH_THEME="random"
 
