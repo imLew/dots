@@ -13,8 +13,12 @@ ZSH_DISABLE_COMPFIX="true"
 # package, the ones below just arent good
 ZSH_BLACKLISTED_THEMES=(
 3den, 
+macovsky-ruby,
 
+kiwi,
 awesomepanda,
+agnoster,
+gozilla,
 dieter,
 fine-time)
 ZSH_THEME="random"
@@ -49,6 +53,7 @@ source $ZSH/oh-my-zsh.sh
 
 export EDITOR='vim'
 
+alias python="ipython"
 alias zshconfig="vim ~/.zshrc"
 alias vimconfig="vim ~/.vimrc"
 alias tmuxconfig="vim ~/.tmux.conf"
