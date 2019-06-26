@@ -58,11 +58,9 @@ vnoremap <space> za
 
 nnoremap <Esc> :set nohlsearch<CR>
 inoremap <Esc> <Esc>:set nohlsearch<CR>
-source ~/.vim/vimrc-source/visual-at.vim
+" source ~/.vim/vimrc-source/visual-at.vim
 
 " plugins (vim native manager)
-packadd julia-vim
-
 packadd vim-tmux-navigator
 packadd vim-surround
 
