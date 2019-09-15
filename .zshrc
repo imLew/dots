@@ -13,6 +13,7 @@ ZSH_DISABLE_COMPFIX="true"
 # package, the ones below just arent good
 ZSH_BLACKLISTED_THEMES=(
 3den, 
+avit.zsh-theme, #this one cannot display half the output from ls
 
 awesomepanda,
 dieter,
