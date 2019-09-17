@@ -2,7 +2,7 @@
 export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="/home/lew/.oh-my-zsh"
+export ZSH="$HOME/.oh-my-zsh"
 ZSH_DISABLE_COMPFIX="true"
 
 # Set name of the theme to load --- if set to "random", it will
@@ -14,8 +14,12 @@ ZSH_DISABLE_COMPFIX="true"
 ZSH_BLACKLISTED_THEMES=(
 3den, 
 avit.zsh-theme, #this one cannot display half the output from ls
+macovsky-ruby,
 
+kiwi,
 awesomepanda,
+agnoster,
+gozilla,
 dieter,
 fine-time)
 ZSH_THEME="random"
@@ -50,6 +54,7 @@ source $ZSH/oh-my-zsh.sh
 
 export EDITOR='vim'
 
+alias python="ipython"
 alias zshconfig="vim ~/.zshrc"
 alias vimconfig="vim ~/.vimrc"
 alias tmuxconfig="vim ~/.tmux.conf"
