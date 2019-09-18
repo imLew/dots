@@ -1,3 +1,4 @@
+syntax on
 colorscheme escuro
 
 " turn on line numbers
@@ -37,6 +38,9 @@ set is
 let &colorcolumn=join(range(81,999),",")
 highlight ColorColumn ctermbg=235 guibg=#2c2d27
 
+" fix backspace on mac
+set backspace=indent,eol,start
+
 set autoindent
 
 " my keybinds
@@ -73,22 +77,22 @@ packadd vim-stay
 set viewoptions=cursor,folds,slash,unix
 set viewoptions-=options
 
-packadd YouCompleteMe
-let g:ycm_autoclose_preview_window_after_completion=1
-map <S-Tab>  :YcmCompleter GoToDefinitionElseDeclaration<CR>
+" packadd YouCompleteMe
+" let g:ycm_autoclose_preview_window_after_completion=1
+" map <S-Tab>  :YcmCompleter GoToDefinitionElseDeclaration<CR>
 
 packadd nerdtree
 map <C-q> :NERDTreeToggle<CR>
 
-packadd vim-gitgutter
-set updatetime=100
-
-packadd ale
-let g:ale_sign_column_always = 1
-let g:ale_lint_on_text_changed = 'normal'
-let g:ale_lint_on_insert_leave = 1
-let g:ale_lint_delay = 100
-let g:ale_lint_on_insert_leave = 1
+" packadd vim-gitgutter
+" set updatetime=100
+" 
+" packadd ale
+" let g:ale_sign_column_always = 1
+" let g:ale_lint_on_text_changed = 'normal'
+" let g:ale_lint_on_insert_leave = 1
+" let g:ale_lint_delay = 100
+" let g:ale_lint_on_insert_leave = 1
 
 " load help
 silent! helptags ALL
