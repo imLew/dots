@@ -20,6 +20,7 @@ ZSH_DISABLE_COMPFIX="true"
 # package, the ones below just arent good
 ZSH_BLACKLISTED_THEMES=(
 3den, 
+avit.zsh-theme, #this one cannot display half the output from ls
 macovsky-ruby,
 norm,
 
@@ -34,7 +35,7 @@ agnoster,
 gozilla,
 dieter,
 fine-time)
-ZSH_THEME="steeef"
+ZSH_THEME="mira"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
