@@ -1,12 +1,12 @@
 [core]
 	editor = vim
 [user]
-	email = n.zaki@rasa.com
-	name = Nikolai
+	email = kol@posteo.de
+	name = imlew
 [grep]
 	lineNumber = true
 [alias]
-	hist = log --pretty=format:'%h %ad | %s%d [%an]' --graph
+    hist = log --pretty=format:'%h %ad | %s%d [%an][%ae]' --graph
 	co = checkout
     c = commit
     b = branch
