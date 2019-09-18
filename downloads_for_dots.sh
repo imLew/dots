@@ -4,7 +4,8 @@
 cd $HOME
 git clone https://github.com/imLew/oh-my-zsh.git 
 cd $HOME.oh-my-zsh
-git pull origin:running running
+git pull origin running:running
+git checkout running
 
 #install vim plugins
 echo "Downloading plugins for vim\n"
