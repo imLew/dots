@@ -1,7 +1,7 @@
-if [ -f /etc/profile ]; then
-    PATH=""
-    source /etc/profile
-fi
+# if [ -f /etc/profile ]; then
+#     PATH=""
+#     source /etc/profile
+# fi
 
 # If you come from bash you might have to change your $PATH.
 export PATH=$PATH:$HOME/bin:/usr/local/bin
