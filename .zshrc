@@ -1,5 +1,12 @@
+if [ -f /etc/profile ]; then
+    PATH=""
+    source /etc/profile
+fi
+
 # If you come from bash you might have to change your $PATH.
-export PATH=$HOME/bin:/usr/local/bin:$PATH
+export PATH=$PATH:$HOME/bin:/usr/local/bin
+
+
 
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
@@ -14,14 +21,20 @@ ZSH_DISABLE_COMPFIX="true"
 ZSH_BLACKLISTED_THEMES=(
 3den, 
 macovsky-ruby,
+norm,
 
+rixius,
+miloshadzic,
+cloud,
+fox,
+rixius,
 kiwi,
 awesomepanda,
 agnoster,
 gozilla,
 dieter,
 fine-time)
-ZSH_THEME="random"
+ZSH_THEME="steeef"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -53,26 +66,10 @@ source $ZSH/oh-my-zsh.sh
 
 export EDITOR='vim'
 
-alias python="ipython"
 alias zshconfig="vim ~/.zshrc"
 alias vimconfig="vim ~/.vimrc"
 alias tmuxconfig="vim ~/.tmux.conf"
 
-# >>> conda init >>>
-# !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$(CONDA_REPORT_ERRORS=false '/$HOME/anaconda3/bin/conda' shell.bash hook 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    \eval "$__conda_setup"
-else
-    if [ -f "/$HOME/anaconda3/etc/profile.d/conda.sh" ]; then
-        . "/$HOME/anaconda3/etc/profile.d/conda.sh"
-        CONDA_CHANGEPS1=false conda activate base
-    else
-        \export PATH="/$HOME/anaconda3/bin:$PATH"
-    fi
-fi
-unset __conda_setup
-# <<< conda init <<<
 
 sd () {
     if [ $# -eq 0 ] # check if arguments were given
@@ -112,4 +109,34 @@ precmd () {
 # edit vim commands in vim?
 autoload -U edit-command-line
 zle -N edit-command-line 
-bindkey -M vicmd v edit-command-line
+bindkey -M vicmd V edit-command-line
+
+# set locales cause this mac thinks there is german english
+export LC_NUMERIC=en_US.UTF-8
+export LC_TIME=en_US.UTF-8
+export LC_COLLATE=en_US.UTF-8
+export LC_MONETARY=en_US.UTF-8
+export LC_MESSAGES=en_US.UTF-8
+
+# add conda completion to fpath
+fpath+=$HOME/.oh-my-zsh/conda-zsh-completion
+zstyle ':completion::complete:*' use-cache 1
+zstyle ":conda_zsh_completion:*" use-groups true
+compinit conda
+
+# added by Anaconda3 2019.03 installer
+# >>> conda init >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$(CONDA_REPORT_ERRORS=false '/Users/nikolai/anaconda3/bin/conda' shell.bash hook 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    \eval "$__conda_setup"
+else
+    if [ -f "/Users/nikolai/anaconda3/etc/profile.d/conda.sh" ]; then
+        . "/Users/nikolai/anaconda3/etc/profile.d/conda.sh"
+        CONDA_CHANGEPS1=false conda activate base
+    else
+        \export PATH="/Users/nikolai/anaconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda init <<<
