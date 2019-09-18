@@ -6,7 +6,8 @@
 [grep]
 	lineNumber = true
 [alias]
-    hist = log --pretty=format:'%h %ad | %s%d [%an][%ae]' --graph
+    wt = worktree
+	hist = log --pretty=format:'%h %ad | %s%d [%an]' --graph
 	co = checkout
     c = commit
     b = branch
