@@ -6,6 +6,7 @@
 [grep]
 	lineNumber = true
 [alias]
+    wt = worktree
 	hist = log --pretty=format:'%h %ad | %s%d [%an]' --graph
 	co = checkout
     c = commit
