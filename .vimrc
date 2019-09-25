@@ -3,6 +3,7 @@ colorscheme escuro
 
 " turn on line numbers
 set number relativenumber
+set showcmd
 
 filetype plugin indent on
 
