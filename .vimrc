@@ -27,8 +27,8 @@ if has("autocmd")
     " highlight during search but not after
     augroup vimrc-incsearch-highlight
       autocmd!
-      autocmd CmdlineEnter /,\? :set hlsearch
-      "  autocmd CmdlineLeave /,\? :set nohlsearch
+      autocmd CmdLineEnter /,\? :set hlsearch
+      autocmd CmdlineLeave /,\? :set nohlsearch
     augroup END
 endif
 
