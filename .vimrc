@@ -61,8 +61,8 @@ imap <C-Space> <C-n>
 nnoremap <space> za
 vnoremap <space> za
 
-nnoremap <Esc> :set nohlsearch<CR>
-inoremap <Esc> <Esc>:set nohlsearch<CR>
+" nnoremap <Esc> :set nohlsearch<CR>
+" inoremap <Esc> <Esc>:set nohlsearch<CR>
 " source ~/.vim/vimrc-source/visual-at.vim
 
 " plugins (vim native manager)
@@ -83,18 +83,22 @@ set viewoptions-=options
 " map <S-Tab>  :YcmCompleter GoToDefinitionElseDeclaration<CR>
 
 packadd nerdtree
+let NERDTreeShowHidden=1
 map <C-q> :NERDTreeToggle<CR>
+autocmd bufenter * if (winnr(“$”) == 1 && exists(“b:NERDTreeType”) && b:NERDTreeType == “primary”) | q | endif
+let NERDTreeMinimalUI = 1 " remove the ? from the top
+let NERDTreeDirArrows = 1
 
-" packadd vim-gitgutter
-" set updatetime=100
-" 
-" packadd ale
-" let g:ale_sign_column_always = 1
-" let g:ale_lint_on_text_changed = 'normal'
-" let g:ale_lint_on_insert_leave = 1
-" let g:ale_lint_delay = 100
-" let g:ale_lint_on_insert_leave = 1
+packadd vim-gitgutter
+set updatetime=100
+
+packadd ale
+let g:ale_sign_column_always = 1
+let g:ale_lint_on_text_changed = 'always'
+let g:ale_lint_on_insert_leave = 1
+let g:ale_lint_delay = 100
+let g:ale_lint_on_insert_leave = 1
 
 " load help
-silent! helptags ALL
+" silent! helptags ALL
 
