@@ -65,6 +65,8 @@ inoremap <Esc> <Esc>:set nohlsearch<CR>
 " source ~/.vim/vimrc-source/visual-at.vim
 
 " plugins (vim native manager)
+packadd typescript-vim
+packadd vim-jsx-typescript
 packadd vim-tmux-navigator
 packadd vim-surround
 
@@ -96,4 +98,3 @@ map <C-q> :NERDTreeToggle<CR>
 
 " load help
 silent! helptags ALL
-
