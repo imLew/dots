@@ -33,7 +33,7 @@ if has("autocmd")
 endif
 
 " highligh while searching
-set is
+" set is
 
 " color past column 80 - ruler
 let &colorcolumn=join(range(81,999),",")
@@ -85,7 +85,7 @@ set viewoptions-=options
 packadd nerdtree
 let NERDTreeShowHidden=1
 map <C-q> :NERDTreeToggle<CR>
-autocmd bufenter * if (winnr(“$”) == 1 && exists(“b:NERDTreeType”) && b:NERDTreeType == “primary”) | q | endif
+" autocmd bufenter * if (winnr(“$”) == 1 && exists(“b:NERDTreeType”) && b:NERDTreeType == “primary”) | q | endif
 let NERDTreeMinimalUI = 1 " remove the ? from the top
 let NERDTreeDirArrows = 1
 

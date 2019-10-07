@@ -4,7 +4,7 @@
 # fi
 
 # If you come from bash you might have to change your $PATH.
-export PATH=$PATH:$HOME/bin:/usr/local/bin
+export PATH="$PATH:/usr/local/bin:/opt/bin"
 
 
 
@@ -131,15 +131,16 @@ compinit conda
 # added by Anaconda3 2019.03 installer
 # >>> conda init >>>
 # !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$(CONDA_REPORT_ERRORS=false '/Users/nikolai/anaconda3/bin/conda' shell.bash hook 2> /dev/null)"
+CONDA_PATH="$HOME/anaconda3"
+__conda_setup="$(CONDA_REPORT_ERRORS=false '$CONDA_PATH/bin/conda' shell.bash hook 2> /dev/null)"
 if [ $? -eq 0 ]; then
     \eval "$__conda_setup"
 else
-    if [ -f "/Users/nikolai/anaconda3/etc/profile.d/conda.sh" ]; then
-        . "/Users/nikolai/anaconda3/etc/profile.d/conda.sh"
+    if [ -f "$CONDA_PATH/etc/profile.d/conda.sh" ]; then
+        . "$CONDA_PATH/etc/profile.d/conda.sh"
         CONDA_CHANGEPS1=false conda activate base
     else
-        \export PATH="/Users/nikolai/anaconda3/bin:$PATH"
+        \export PATH="$HOME/bin:$PATH"
     fi
 fi
 unset __conda_setup
