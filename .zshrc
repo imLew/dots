@@ -70,6 +70,9 @@ export EDITOR='vim'
 if [ -e /opt/nvim.appimage ]; then
     alias nvim="/opt/nvim.appimage"
 fi
+if [ -x "$(command -v systemctl)" ]; then
+    function suspend(){echo "Will suspend in $1"; sleep $1; systemctl suspend}
+fi
 alias zshconfig="vim ~/.zshrc"
 alias vimconfig="vim ~/.vimrc"
 alias tmuxconfig="vim ~/.tmux.conf"
