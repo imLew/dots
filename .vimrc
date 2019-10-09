@@ -82,9 +82,9 @@ packadd vim-stay
 set viewoptions=cursor,folds,slash,unix
 set viewoptions-=options
 
-" packadd YouCompleteMe
-" let g:ycm_autoclose_preview_window_after_completion=1
-" map <S-Tab>  :YcmCompleter GoToDefinitionElseDeclaration<CR>
+packadd YouCompleteMe
+let g:ycm_autoclose_preview_window_after_completion=1
+map <S-Tab>  :YcmCompleter GoToDefinitionElseDeclaration<CR>
 
 packadd nerdtree
 let NERDTreeShowHidden=1
@@ -111,9 +111,14 @@ let g:ctrlp_show_hidden = 1
 
 packadd ale
 let g:ale_sign_column_always = 1
-let g:ale_lint_on_text_changed = 'normal'
+let g:ale_lint_on_text_changed = 'always'
 let g:ale_lint_on_insert_leave = 1
 let g:ale_lint_delay = 100
+let g:airline#extensions#ale#enabled = 1
+let g:ale_set_highlights = 0
+" let g:ale_linters = {
+"             \    'python': ['mypy', 'prospector', 'pyls', 'flake8']
+"             \}
 
 packadd vim-gitgutter
 set updatetime=100

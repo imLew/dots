@@ -70,6 +70,9 @@ export EDITOR='vim'
 if [ -e /opt/nvim.appimage ]; then
     alias nvim="/opt/nvim.appimage"
 fi
+if [ -x "$(command -v nvim)" ]; then
+    alias n="nvim"
+fi
 alias zshconfig="vim ~/.zshrc"
 alias vimconfig="vim ~/.vimrc"
 alias tmuxconfig="vim ~/.tmux.conf"
