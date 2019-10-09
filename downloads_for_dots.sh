@@ -22,3 +22,9 @@ git clone https://github.com/sheerun/vim-polyglot.git
 git clone https://github.com/zhimsel/vim-stay.git
 git clone https://github.com/tpope/vim-surround.git
 git clone https://github.com/christoomey/vim-tmux-navigator.git
+git clone https://github.com/peitalin/vim-jsx-typescript.git
+git clone https://github.com/leafgarland/typescript-vim.git
+git clone https://github.com/dyng/ctrlsf.vim.git
+git clone https://github.com/ctrlpvim/ctrlp.vim.git
+
+

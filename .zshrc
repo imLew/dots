@@ -1,16 +1,14 @@
-# if [ -f /etc/profile ]; then
-#     PATH=""
-#     source /etc/profile
-# fi
-
-# If you come from bash you might have to change your $PATH.
 export PATH="$PATH:/usr/local/bin:/opt/bin"
-
-
 
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 ZSH_DISABLE_COMPFIX="true"
+
+# acoording to SE these lines will fix the deprecation warning for the
+# git-completion
+autoload compinit -u
+
+source $ZSH/oh-my-zsh.sh
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -37,12 +35,6 @@ dieter,
 fine-time)
 ZSH_THEME="half-life"
 
-# Set list of themes to pick from when loading at random
-# Setting this variable when ZSH_THEME=random will cause zsh to load
-# a theme from this variable instead of looking in ~/.oh-my-zsh/themes/
-# If set to an empty array, this variable will have no effect.
-# ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
-
 # Uncomment the following line to display red dots whilst waiting for completion.
 COMPLETION_WAITING_DOTS="true"
 
@@ -54,41 +46,24 @@ git
 # compleat
 )
 
-# acoording to SE these lines will fix the deprecation warning for the
-# git-completion
-autoload compinit -u
-
-source $ZSH/oh-my-zsh.sh
-
-# source $HOME/.oh-my-zsh/git-completion.zsh
-
-# You may need to manually set your language environment
-# export LANG=en_US.UTF-8
-
 export EDITOR='vim'
 
-if [ -e /opt/nvim.appimage ]; then
-    alias nvim="/opt/nvim.appimage"
-fi
-if [ -x "$(command -v systemctl)" ]; then
-    function suspend(){echo "Will suspend in $1"; sleep $1; systemctl suspend}
-fi
 alias zshconfig="vim ~/.zshrc"
 alias vimconfig="vim ~/.vimrc"
 alias tmuxconfig="vim ~/.tmux.conf"
-
-
-sd () {
-    if [ $# -eq 0 ] # check if arguments were given
-    then
-        builtin cd
-    else
-        if [ ! -d "$1" ] #if directory doesn't exist create it
-            then mkdir -p $1
-        fi
-        builtin cd $1
-    fi
-}
+if [ -x "$(command -v systemctl)" ]; then
+    function suspend(){echo "Will suspend in $1"; sleep $1; systemctl suspend}
+fi
+if [ -e /opt/nvim.appimage ]; then
+    alias nvim="/opt/nvim.appimage"
+fi
+if [ -x "$(command -v nvim)" ]; then
+    alias n="nvim"
+    alias zshconfig="nvim ~/.zshrc"
+    alias vimconfig="nvim ~/.vimrc"
+    alias tmuxconfig="nvim ~/.tmux.conf"
+    export EDITOR='nvim'
+fi
 
 # turn on vi mode
 bindkey -v
