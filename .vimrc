@@ -3,6 +3,7 @@ colorscheme windflower
 
 " turn on line numbers
 set number relativenumber
+set showcmd
 
 filetype plugin indent on
 
@@ -28,7 +29,7 @@ if has("autocmd")
     " highlight during search but not after
     augroup vimrc-incsearch-highlight
       autocmd!
-      autocmd CmdlineEnter /,\? :set hlsearch
+      autocmd CmdLineEnter /,\? :set hlsearch
       autocmd CmdlineLeave /,\? :set nohlsearch
     augroup END
 endif
@@ -86,11 +87,12 @@ set viewoptions-=options
 " map <S-Tab>  :YcmCompleter GoToDefinitionElseDeclaration<CR>
 
 packadd nerdtree
+let NERDTreeShowHidden=1
 map <C-q> :NERDTreeToggle<CR>
+autocmd bufenter * if (winnr(“$”) == 1 && exists(“b:NERDTreeType”) && b:NERDTreeType == “primary”) | q | endif
+let NERDTreeMinimalUI = 1 " remove the ? from the top
+let NERDTreeDirArrows = 1
 
-" packadd vim-gitgutter
-" set updatetime=100
-" 
 packadd ctrlsf.vim
 nmap     <C-F>f <Plug>CtrlSFPrompt
 vmap     <C-F>f <Plug>CtrlSFVwordPath
@@ -110,9 +112,15 @@ let g:ctrlp_show_hidden = 1
 packadd ale
 let g:ale_sign_column_always = 1
 let g:ale_lint_on_text_changed = 'normal'
+
+packadd vim-gitgutter
+set updatetime=100
+
+packadd ale
+let g:ale_sign_column_always = 1
+let g:ale_lint_on_text_changed = 'always'
 let g:ale_lint_on_insert_leave = 1
 let g:ale_lint_delay = 100
-let g:ale_lint_on_insert_leave = 1
 
 " load help
 silent! helptags ALL

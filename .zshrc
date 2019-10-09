@@ -67,6 +67,9 @@ source $ZSH/oh-my-zsh.sh
 
 export EDITOR='vim'
 
+if [ -e /opt/nvim.appimage ]; then
+    alias nvim="/opt/nvim.appimage"
+fi
 alias zshconfig="vim ~/.zshrc"
 alias vimconfig="vim ~/.vimrc"
 alias tmuxconfig="vim ~/.tmux.conf"
