@@ -1,5 +1,5 @@
 syntax on
-colorscheme escuro
+colorscheme windflower
 
 " turn on line numbers
 set number relativenumber
@@ -17,17 +17,19 @@ set expandtab       " Expand TABs to spaces.
 set textwidth=80
 
 if has("autocmd")
+    autocmd BufNewFile,BufRead *.ts,*.js,*.tsx,*.jsx set filetype=typescript
     " Use actual tab chars in Makefiles.
     autocmd FileType make set tabstop=8 shiftwidth=8 softtabstop=0 noexpandtab
     autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
     autocmd FileType markdown setlocal ts=2 sts=2 sw=2 expandtab
     autocmd FileType sh setlocal ts=2 sts=2 sw=2 expandtab
+    autocmd FileType typescript setlocal ts=2 sts=2 sw=2 expandtab
     
     " highlight during search but not after
     augroup vimrc-incsearch-highlight
       autocmd!
       autocmd CmdlineEnter /,\? :set hlsearch
-      "  autocmd CmdlineLeave /,\? :set nohlsearch
+      autocmd CmdlineLeave /,\? :set nohlsearch
     augroup END
 endif
 
@@ -60,8 +62,8 @@ imap <C-Space> <C-n>
 nnoremap <space> za
 vnoremap <space> za
 
-nnoremap <Esc> :set nohlsearch<CR>
-inoremap <Esc> <Esc>:set nohlsearch<CR>
+" nnoremap <Esc> :set nohlsearch<CR>
+" inoremap <Esc> <Esc>:set nohlsearch<CR>
 " source ~/.vim/vimrc-source/visual-at.vim
 
 " plugins (vim native manager)
@@ -89,12 +91,28 @@ map <C-q> :NERDTreeToggle<CR>
 " packadd vim-gitgutter
 " set updatetime=100
 " 
-" packadd ale
-" let g:ale_sign_column_always = 1
-" let g:ale_lint_on_text_changed = 'normal'
-" let g:ale_lint_on_insert_leave = 1
-" let g:ale_lint_delay = 100
-" let g:ale_lint_on_insert_leave = 1
+packadd ctrlsf.vim
+nmap     <C-F>f <Plug>CtrlSFPrompt
+vmap     <C-F>f <Plug>CtrlSFVwordPath
+vmap     <C-F>F <Plug>CtrlSFVwordExec
+nmap     <C-F>n <Plug>CtrlSFCwordPath
+nmap     <C-F>p <Plug>CtrlSFPwordPath
+nnoremap <C-F>o :CtrlSFOpen<CR>
+nnoremap <C-F>t :CtrlSFToggle<CR>
+inoremap <C-F>t <Esc>:CtrlSFToggle<CR>
+
+packadd ctrlp.vim
+let g:ctrlp_map = '<c-p>'
+let g:ctrlp_cmd = 'CtrlP'
+let g:ctrlp_working_path_mode = 'ra'
+let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard'] "Hide files in .gitignore
+let g:ctrlp_show_hidden = 1 
+packadd ale
+let g:ale_sign_column_always = 1
+let g:ale_lint_on_text_changed = 'normal'
+let g:ale_lint_on_insert_leave = 1
+let g:ale_lint_delay = 100
+let g:ale_lint_on_insert_leave = 1
 
 " load help
 silent! helptags ALL
