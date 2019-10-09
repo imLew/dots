@@ -35,7 +35,7 @@ agnoster,
 gozilla,
 dieter,
 fine-time)
-ZSH_THEME="mira"
+ZSH_THEME="half-life"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
