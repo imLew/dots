@@ -89,7 +89,6 @@ set viewoptions-=options
 packadd nerdtree
 let NERDTreeShowHidden=1
 map <C-q> :NERDTreeToggle<CR>
-autocmd bufenter * if (winnr(“$”) == 1 && exists(“b:NERDTreeType”) && b:NERDTreeType == “primary”) | q | endif
 let NERDTreeMinimalUI = 1 " remove the ? from the top
 let NERDTreeDirArrows = 1
 
@@ -109,18 +108,15 @@ let g:ctrlp_cmd = 'CtrlP'
 let g:ctrlp_working_path_mode = 'ra'
 let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard'] "Hide files in .gitignore
 let g:ctrlp_show_hidden = 1 
+
 packadd ale
 let g:ale_sign_column_always = 1
 let g:ale_lint_on_text_changed = 'normal'
+let g:ale_lint_on_insert_leave = 1
+let g:ale_lint_delay = 100
 
 packadd vim-gitgutter
 set updatetime=100
-
-packadd ale
-let g:ale_sign_column_always = 1
-let g:ale_lint_on_text_changed = 'always'
-let g:ale_lint_on_insert_leave = 1
-let g:ale_lint_delay = 100
 
 " load help
 silent! helptags ALL
