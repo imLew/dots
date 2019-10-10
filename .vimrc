@@ -73,8 +73,9 @@ packadd vim-jsx-typescript
 packadd vim-tmux-navigator
 packadd vim-surround
 
-packadd SimpylFold
 packadd vim-airline
+let g:airline#extensions#tabline#enabled = 1
+packadd SimpylFold
 let g:SimpylFold_docstring_preview=1
 packadd FastFold
 let g:fastfold_savehook = 0
