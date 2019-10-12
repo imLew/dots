@@ -4,12 +4,6 @@ export PATH="$PATH:/usr/local/bin:/opt/bin"
 export ZSH="$HOME/.oh-my-zsh"
 ZSH_DISABLE_COMPFIX="true"
 
-# acoording to SE these lines will fix the deprecation warning for the
-# git-completion
-autoload compinit -u
-
-source $ZSH/oh-my-zsh.sh
-
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
@@ -35,6 +29,9 @@ dieter,
 fine-time)
 ZSH_THEME="half-life"
 
+#after OMZ setup is complete source it
+source $ZSH/oh-my-zsh.sh
+
 # Uncomment the following line to display red dots whilst waiting for completion.
 COMPLETION_WAITING_DOTS="true"
 
@@ -45,6 +42,9 @@ git battery
 git
 # compleat
 )
+# acoording to SE these lines will fix the deprecation warning for the
+# git-completion
+autoload compinit -u
 
 export EDITOR='vim'
 
