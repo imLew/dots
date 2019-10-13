@@ -1,6 +1,8 @@
 syntax on
 colorscheme windflower
 
+set encoding=utf-8
+
 " turn on line numbers
 set number relativenumber
 set showcmd
