@@ -1,0 +1,4 @@
+config/.vim/pack
+config/.vim/view
+__pycache__/
+

@@ -1,0 +1,2 @@
+packadd julia-vim
+
