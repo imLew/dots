@@ -28,7 +28,7 @@ gozilla,
 dieter,
 rixius,
 fine-time)
-ZSH_THEME="rkj" #another awesome theme is 'dst'
+ZSH_THEME="dst"
 
 #after OMZ setup is complete source it
 source $ZSH/oh-my-zsh.sh
