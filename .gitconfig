@@ -1,14 +1,14 @@
 [core]
-	editor = vim
+	editor = nvim
 [user]
 	email = kol@posteo.de
-	name = imlew
+	name = '!whoami'
 [grep]
 	lineNumber = true
 [alias]
     wt = worktree
-	hist = log --pretty=format:'%h %ad | %s%d [%an]' --graph
-	co = checkout
+    hist = log --pretty=format:'%h %ad | %s%d [%an]' --graph
+    co = checkout
     c = commit
     b = branch
     s = status
