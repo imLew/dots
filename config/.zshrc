@@ -109,6 +109,6 @@ zstyle ':completion::complete:*' use-cache 1
 zstyle ":conda_zsh_completion:*" use-groups true
 compinit conda
 
-if [ -f $HOME/.config/conda_setup ]; then
-    source $HOME/.config/conda_setup
+if [ -f "$HOME/.config/conda_setup" ]; then
+    source "$HOME/.config/conda_setup"
 fi
