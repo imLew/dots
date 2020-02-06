@@ -30,6 +30,20 @@ rixius,
 fine-time)
 ZSH_THEME="dst"
 
+plugins=(
+    vi-mode
+    python
+    pip
+    dirhistory 
+    extract 
+    z 
+    git 
+    compleat
+)
+# acoording to SE these lines will fix the deprecation warning for the
+# git-completion
+autoload compinit -u
+
 #after OMZ setup is complete source it
 source $ZSH/oh-my-zsh.sh
 
@@ -38,16 +52,10 @@ COMPLETION_WAITING_DOTS="true"
 
 HIST_STAMPS="yyyy/mm/dd"
 
-plugins=(
-git battery
-git
-# compleat
-)
-# acoording to SE these lines will fix the deprecation warning for the
-# git-completion
-autoload compinit -u
-
 export EDITOR='vim'
+
+alias codna="conda"
+alias gti="git"
 
 alias zshconfig="vim ~/.zshrc"
 alias vimconfig="vim ~/.vimrc"
@@ -57,9 +65,9 @@ if [ -x "$(command -v systemctl)" ]; then
 	    	echo "Will suspend in $1"; sleep $1; systemctl suspend
 	}
 fi
-if [ -e /opt/nvim.appimage ]; then
-    alias nvim="/opt/nvim.appimage"
-fi
+# if [ -e "$HOME/Software/nvim.appimage" ]; then
+#     alias -g nvim="$HOME/Software/nvim.appimage"
+# fi
 if [ -x "$(command -v nvim)" ]; then
     alias n="nvim"
     alias zshconfig="nvim ~/.zshrc"
@@ -69,7 +77,7 @@ if [ -x "$(command -v nvim)" ]; then
 fi
 
 # turn on vi mode
-bindkey -v
+# bindkey -v
 export KEYTIMEOUT=1
 autoload -Uz history-search-end
 
@@ -112,3 +120,5 @@ compinit conda
 if [ -f "$HOME/.config/conda_setup" ]; then
     source "$HOME/.config/conda_setup"
 fi
+
+eval $(thefuck --alias)
