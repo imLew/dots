@@ -7,7 +7,7 @@ set cmdheight=2
 " always show signcolumns
 set signcolumn=yes
 
-set updatetime=300
+set updatetime=100
 
 set encoding=utf-8
 
@@ -25,7 +25,7 @@ set tabstop=4       " The width of a TAB is set to 4.
 set shiftwidth=4    " Indents will have a width of 4.
 set softtabstop=4   " Sets the number of columns for a TAB.
 set expandtab       " Expand TABs to spaces.
-" set textwidth=80
+set textwidth=0
 
 if has("autocmd")
     autocmd BufNewFile,BufRead *.ts,*.js,*.tsx,*.jsx set filetype=typescript
@@ -53,21 +53,21 @@ set smartcase
 " with tab and shift-tab, select by pressing enter
 " cancel completion by pressing esc
 set completeopt=menuone,noselect
-" function! Tab_Or_Complete()
-"   if col('.')>1 && strpart( getline('.'), col('.')-2, 3 ) =~ '^\w'
-"     return "\<C-N>"
-"   else
-"     return "\<Tab>"
-"   endif
-" endfunction
-" inoremap <Tab> <C-R>=Tab_Or_Complete()<CR>
-" inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
-" inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<CR>"
+function! Tab_Or_Complete()
+  if col('.')>1 && strpart( getline('.'), col('.')-2, 3 ) =~ '^\w'
+    return "\<C-N>"
+  else
+    return "\<Tab>"
+  endif
+endfunction
+inoremap <Tab> <C-R>=Tab_Or_Complete()<CR>
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<CR>"
 " inoremap <expr> <Esc> pumvisible() ? "\<C-e>" : "\<Esc>"
 
 " grepping
-command! -nargs=+ Grep execute 'silent lgrep! -I -r -n * -e <args>' | lopen | execute 'silent /<args>'
-command! -nargs=+ Grepa execute 'silent lgrepa! -I -r -n * -e <args>' | lopen | execute 'silent /<args>'
+" command! -nargs=+ Grep execute 'silent lgrep! -I -r -n * -e <args>' | lopen | execute 'silent /<args>'
+" command! -nargs=+ Grepa execute 'silent lgrepa! -I -r -n * -e <args>' | lopen | execute 'silent /<args>'
 " nnoremap <C-f> :Grep 
 " " [l to go to previous match
 " nnoremap [l :lp<CR>
@@ -78,14 +78,11 @@ command! -nargs=+ Grepa execute 'silent lgrepa! -I -r -n * -e <args>' | lopen | 
 " " ]L to go to last match
 " nnoremap ]L :lla<CR>
 
-" " color past column 80 - ruler
-" let &colorcolumn=join(range(81,999),",")
-" highlight ColorColumn ctermbg=235 guibg=#2c2d27
-
 " fix backspace on mac
 set backspace=indent,eol,start
 
 set autoindent
+" set paste
 
 " plugins (vim native manager)
 source ~/.vim/vimrc-source/visual-at.vim
@@ -122,18 +119,16 @@ Plug 'tpope/vim-commentary'
 
 " Plug 'junegunn/fzf'
 
-" Plug 'autozimu/LanguageClient-neovim', {
-"     \ 'branch': 'next',
-"     \ 'do': 'bash install.sh',
-"     \ }
+Plug 'autozimu/LanguageClient-neovim', {
+    \ 'branch': 'next',
+    \ 'do': 'bash install.sh',
+    \ }
 
 Plug 'wsdjeg/FlyGrep.vim'
 
 Plug 'JuliaEditorSupport/julia-vim'
 
 Plug 'jpalardy/vim-slime'
-
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 call plug#end()
 
@@ -149,106 +144,21 @@ let g:slime_paste_file = "/tmp/vim-slime"
 let g:slime_default_config = {"socket_name": "default", "target_pane": "{right-of}"}
 
 packadd vim-gitgutter
-set updatetime=50
 
-" if hidden is not set, TextEdit might fail.
+" Required for operations modifying multiple buffers like rename.
 set hidden
 
-" Some servers have issues with backup files, see #649
-set nobackup
-set nowritebackup
+let g:LanguageClient_serverCommands = {
+    \ 'rust': ['~/.cargo/bin/rustup', 'run', 'stable', 'rls'],
+    \ 'javascript': ['/usr/local/bin/javascript-typescript-stdio'],
+    \ 'javascript.jsx': ['tcp://127.0.0.1:2089'],
+    \ 'python': ['/usr/local/bin/pyls'],
+    \ 'ruby': ['~/.rbenv/shims/solargraph', 'stdio'],
+    \ }
 
-" Use tab for trigger completion with characters ahead and navigate.
-" Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin.
-inoremap <silent><expr> <TAB>
-      \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
-      \ coc#refresh()
-inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
-inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<CR>"
-inoremap <expr> <Esc> pumvisible() ? "\<C-e>" : "\<Esc>"
-
-function! s:check_back_space() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~# '\s'
-endfunction
-
-" Use `[g` and `]g` to navigate diagnostics
-nmap <silent> [g <Plug>(coc-diagnostic-prev)
-nmap <silent> ]g <Plug>(coc-diagnostic-next)
-
-" Remap keys for gotos
-nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gy <Plug>(coc-type-definition)
-nmap <silent> gi <Plug>(coc-implementation)
-nmap <silent> gr <Plug>(coc-references)
-
-" Use K to show documentation in preview window
-nnoremap <silent> K :call <SID>show_documentation()<CR>
-
-function! s:show_documentation()
-  if (index(['vim','help'], &filetype) >= 0)
-    execute 'h '.expand('<cword>')
-  else
-    call CocAction('doHover')
-  endif
-endfunction
-
-" Highlight symbol under cursor on CursorHold
-autocmd CursorHold * silent call CocActionAsync('highlight')
-
-" Remap for rename current word
-nmap <leader>rn <Plug>(coc-rename)
-
-" Remap for format selected region
-xmap <leader>f  <Plug>(coc-format-selected)
-nmap <leader>f  <Plug>(coc-format-selected)
-
-augroup mygroup
-  autocmd!
-  " Setup formatexpr specified filetype(s).
-  autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
-  " Update signature help on jump placeholder
-  autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
-augroup end
-
-" Remap for do codeAction of selected region, ex: `<leader>aap` for current paragraph
-xmap <leader>a  <Plug>(coc-codeaction-selected)
-nmap <leader>a  <Plug>(coc-codeaction-selected)
-
-" Remap for do codeAction of current line
-nmap <leader>ac  <Plug>(coc-codeaction)
-" Fix autofix problem of current line
-nmap <leader>qf  <Plug>(coc-fix-current)
-
-" Create mappings for function text object, requires document symbols feature of languageserver.
-xmap if <Plug>(coc-funcobj-i)
-xmap af <Plug>(coc-funcobj-a)
-omap if <Plug>(coc-funcobj-i)
-omap af <Plug>(coc-funcobj-a)
-
-" Use <TAB> for select selections ranges, needs server support, like: coc-tsserver, coc-python
-nmap <silent> <TAB> <Plug>(coc-range-select)
-xmap <silent> <TAB> <Plug>(coc-range-select)
-
-" Add status line support, for integration with other plugin, checkout `:h coc-status`
-set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
-
-" Using CocList
-" Show all diagnostics
-nnoremap <silent> <space>a  :<C-u>CocList diagnostics<cr>
-" Manage extensions
-nnoremap <silent> <space>e  :<C-u>CocList extensions<cr>
-" Show commands
-nnoremap <silent> <space>c  :<C-u>CocList commands<cr>
-" Find symbol of current document
-nnoremap <silent> <space>o  :<C-u>CocList outline<cr>
-" Search workspace symbols
-nnoremap <silent> <space>s  :<C-u>CocList -I symbols<cr>
-" Do default action for next item.
-nnoremap <silent> <space>j  :<C-u>CocNext<CR>
-" Do default action for previous item.
-nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
-" Resume latest coc list
-nnoremap <silent> <space>p  :<C-u>CocListResume<CR>"" language client neovim suggested conf
+nnoremap <F5> :call LanguageClient_contextMenu()<CR>
+" Or map each action separately
+nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
+nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
+nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>" Use tab for trigger completion with characters ahead and navigate.
 
