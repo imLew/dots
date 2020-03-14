@@ -29,7 +29,7 @@ for_window [class=".*"] title_format "<b>%title</b>"
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec alacritty -e tmux
+bindsym $mod+Return exec st -e tmux
 
 # kill focused window
 bindsym $mod+Shift+q kill

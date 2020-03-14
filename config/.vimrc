@@ -1,5 +1,5 @@
 syntax on
-colorscheme zenburn
+colorscheme escuro
 
 " Better display for messages
 set cmdheight=2
@@ -53,16 +53,17 @@ set smartcase
 " with tab and shift-tab, select by pressing enter
 " cancel completion by pressing esc
 set completeopt=menuone,noselect
-function! Tab_Or_Complete()
-  if col('.')>1 && strpart( getline('.'), col('.')-2, 3 ) =~ '^\w'
-    return "\<C-N>"
-  else
-    return "\<Tab>"
-  endif
-endfunction
-inoremap <Tab> <C-R>=Tab_Or_Complete()<CR>
-inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
-inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<CR>"
+
+" function! Tab_Or_Complete()
+"   if col('.')>1 && strpart( getline('.'), col('.')-2, 3 ) =~ '^\w'
+"     return "\<C-N>"
+"   else
+"     return "\<Tab>"
+"   endif
+" endfunction
+" inoremap <Tab> <C-R>=Tab_Or_Complete()<CR>		
+" inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+" inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<CR>"
 " inoremap <expr> <Esc> pumvisible() ? "\<C-e>" : "\<Esc>"
 
 " grepping
@@ -82,13 +83,12 @@ inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<CR>"
 set backspace=indent,eol,start
 
 set autoindent
-" set paste
 
-" plugins (vim native manager)
+"" plugins (vim native manager)
 source ~/.vim/vimrc-source/visual-at.vim
 
-packadd typescript-vim
-packadd vim-jsx-typescript
+"packadd typescript-vim
+"packadd vim-jsx-typescript
 
 packadd vim-tmux-navigator
 
@@ -119,7 +119,7 @@ Plug 'tpope/vim-commentary'
 
 " Plug 'junegunn/fzf'
 
-Plug 'natebosch/vim-lsc'
+" Plug 'natebosch/vim-lsc'
 
 Plug 'wsdjeg/FlyGrep.vim'
 
@@ -140,25 +140,27 @@ let g:slime_target = "tmux"
 let g:slime_paste_file = "/tmp/vim-slime"
 let g:slime_default_config = {"socket_name": "default", "target_pane": "{right-of}"}
 
+let g:latex_to_unicode_auto = 1
+
 packadd vim-gitgutter
 
-let g:lsc_server_commands = {'python': 'pyls'}
+" let g:lsc_server_commands = {'python': 'pyls'}
 
 " not sure what auto vs manual completion means
 " let g:lsc_enable_autocomplete = v:false
 
-let g:lsc_auto_map = {
-    \ 'GoToDefinition': '<C-]>',
-    \ 'GoToDefinitionSplit': ['<C-W>]', '<C-W><C-]>'],
-    \ 'FindReferences': 'gr',
-    \ 'NextReference': '<C-n>',
-    \ 'PreviousReference': '<C-p>',
-    \ 'FindImplementations': 'gI',
-    \ 'FindCodeActions': 'ga',
-    \ 'Rename': 'gR',
-    \ 'ShowHover': v:true,
-    \ 'DocumentSymbol': 'go',
-    \ 'WorkspaceSymbol': 'gS',
-    \ 'SignatureHelp': 'gm',
-    \ 'Completion': 'completefunc',
-    \}
+" let g:lsc_auto_map = {
+"     \ 'GoToDefinition': '<C-]>',
+"     \ 'GoToDefinitionSplit': ['<C-W>]', '<C-W><C-]>'],
+"     \ 'FindReferences': 'gr',
+"     \ 'NextReference': '<C-n>',
+"     \ 'PreviousReference': '<C-p>',
+"     \ 'FindImplementations': 'gI',
+"     \ 'FindCodeActions': 'ga',
+"     \ 'Rename': 'gR',
+"     \ 'ShowHover': v:true,
+"     \ 'DocumentSymbol': 'go',
+"     \ 'WorkspaceSymbol': 'gS',
+"     \ 'SignatureHelp': 'gm',
+"     \ 'Completion': 'completefunc',
+"     \}
