@@ -44,58 +44,22 @@ if has("autocmd")
     augroup END
 endif
 
-set nohlsearch
-
 set ignorecase
 set smartcase
 
-" completion: always show menu, show menu with tab and move through
-" with tab and shift-tab, select by pressing enter
-" cancel completion by pressing esc
 set completeopt=menuone,noselect
-
-" function! Tab_Or_Complete()
-"   if col('.')>1 && strpart( getline('.'), col('.')-2, 3 ) =~ '^\w'
-"     return "\<C-N>"
-"   else
-"     return "\<Tab>"
-"   endif
-" endfunction
-" inoremap <Tab> <C-R>=Tab_Or_Complete()<CR>		
-" inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
-" inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<CR>"
-" inoremap <expr> <Esc> pumvisible() ? "\<C-e>" : "\<Esc>"
-
-" grepping
-" command! -nargs=+ Grep execute 'silent lgrep! -I -r -n * -e <args>' | lopen | execute 'silent /<args>'
-" command! -nargs=+ Grepa execute 'silent lgrepa! -I -r -n * -e <args>' | lopen | execute 'silent /<args>'
-" nnoremap <C-f> :Grep 
-" " [l to go to previous match
-" nnoremap [l :lp<CR>
-" " ]l to go to next match
-" nnoremap ]l :lne<CR>
-" " [L to go to first match
-" nnoremap [L :lfir<CR>
-" " ]L to go to last match
-" nnoremap ]L :lla<CR>
 
 " fix backspace on mac
 set backspace=indent,eol,start
 
 set autoindent
 
-"" plugins (vim native manager)
+set foldmethod=indent
+
+nnoremap Y y$
+
+" plugins (vim native manager)
 source ~/.vim/vimrc-source/visual-at.vim
-
-"packadd typescript-vim
-"packadd vim-jsx-typescript
-
-packadd vim-tmux-navigator
-
-packadd vim-surround
-
-packadd vim-airline
-let g:airline#extensions#tabline#enabled = 1
 
 " packadd SimpylFold
 " let g:SimpylFold_docstring_preview=1
@@ -103,23 +67,19 @@ let g:airline#extensions#tabline#enabled = 1
 " packadd FastFold
 " let g:fastfold_savehook = 0
 
-packadd vim-stay
-set viewoptions=cursor,folds,slash,unix
-set viewoptions-=options
-
-packadd nerdtree
-let NERDTreeShowHidden=1
-map <C-q> :NERDTreeToggle<CR>
-let NERDTreeMinimalUI = 1 " remove the ? from the top
-let NERDTreeDirArrows = 1
 
 call plug#begin()
+Plug 'vim-airline/vim-airline'
+
+Plug 'tpope/vim-surround'
+
+Plug 'preservim/nerdtree'
+
+Plug 'christoomey/vim-tmux-navigator'
 
 Plug 'tpope/vim-commentary'
 
-" Plug 'junegunn/fzf'
-
-" Plug 'natebosch/vim-lsc'
+Plug 'junegunn/fzf'
 
 Plug 'wsdjeg/FlyGrep.vim'
 
@@ -127,7 +87,27 @@ Plug 'JuliaEditorSupport/julia-vim'
 
 Plug 'jpalardy/vim-slime'
 
+Plug 'autozimu/LanguageClient-neovim', {
+    \ 'branch': 'next',
+    \ 'do': 'bash install.sh',
+    \ }
+
+Plug 'airblade/vim-gitgutter'
+
+Plug 'zhimsel/vim-stay'
 call plug#end()
+
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
+
+" vim-stay options
+set viewoptions=cursor,folds,slash,unix
+set viewoptions-=options
+
+let NERDTreeShowHidden=1
+map <C-q> :NERDTreeToggle<CR>
+let NERDTreeMinimalUI = 1 " remove the ? from the top
+let NERDTreeDirArrows = 1
 
 nnoremap <C-f> :FlyGrep<cr>
 
@@ -140,27 +120,25 @@ let g:slime_target = "tmux"
 let g:slime_paste_file = "/tmp/vim-slime"
 let g:slime_default_config = {"socket_name": "default", "target_pane": "{right-of}"}
 
+" julia-vim
 let g:latex_to_unicode_auto = 1
 
-packadd vim-gitgutter
+" LanguageClient-neovim config
+" Required for operations modifying multiple buffers like rename.
+set hidden
 
-" let g:lsc_server_commands = {'python': 'pyls'}
+let g:LanguageClient_serverCommands = {
+    \ 'python': ['~/Software/anaconda3/bin/pyls'],
+    \ }
 
-" not sure what auto vs manual completion means
-" let g:lsc_enable_autocomplete = v:false
-
-" let g:lsc_auto_map = {
-"     \ 'GoToDefinition': '<C-]>',
-"     \ 'GoToDefinitionSplit': ['<C-W>]', '<C-W><C-]>'],
-"     \ 'FindReferences': 'gr',
-"     \ 'NextReference': '<C-n>',
-"     \ 'PreviousReference': '<C-p>',
-"     \ 'FindImplementations': 'gI',
-"     \ 'FindCodeActions': 'ga',
-"     \ 'Rename': 'gR',
-"     \ 'ShowHover': v:true,
-"     \ 'DocumentSymbol': 'go',
-"     \ 'WorkspaceSymbol': 'gS',
-"     \ 'SignatureHelp': 'gm',
-"     \ 'Completion': 'completefunc',
-"     \}
+function LC_maps()
+  if has_key(g:LanguageClient_serverCommands, &filetype)
+    nnoremap <F5> :call LanguageClient_contextMenu()<CR>
+    nnoremap <buffer> <silent> K :call LanguageClient#textDocument_hover()<cr>
+    nnoremap <buffer> <silent> gd :call LanguageClient#textDocument_definition()<CR>
+    nnoremap <buffer> <silent> gr :call LanguageClient#textDocument_references()<CR>
+    nnoremap <buffer> <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
+  endif
+endfunction
+autocmd FileType * call LC_maps()
+set formatexpr=LanguageClient#textDocument_rangeFormatting_sync()
