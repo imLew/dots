@@ -4,10 +4,15 @@ colorscheme escuro
 " Better display for messages
 set cmdheight=2
 
-" always show signcolumns
-set signcolumn=yes
+" better file related searches
+set path+=**
 
-set updatetime=100
+command! MakeTags !ctags -R .
+
+" always show signcolumns
+" set signcolumn=yes
+
+" set updatetime=100
 
 set encoding=utf-8
 
@@ -69,76 +74,73 @@ source ~/.vim/vimrc-source/visual-at.vim
 
 
 call plug#begin()
-Plug 'vim-airline/vim-airline'
 
-Plug 'tpope/vim-surround'
+    Plug 'vim-airline/vim-airline'
+    let g:airline#extensions#tabline#enabled = 1
+    let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
 
-Plug 'preservim/nerdtree'
+    Plug 'tpope/vim-surround'
 
-Plug 'christoomey/vim-tmux-navigator'
+    Plug 'preservim/nerdtree'
+    let NERDTreeShowHidden=1
+    map <C-q> :NERDTreeToggle<CR>
+    let NERDTreeMinimalUI = 1 " remove the ? from the top
+    let NERDTreeDirArrows = 1
 
-Plug 'tpope/vim-commentary'
+    Plug 'christoomey/vim-tmux-navigator'
 
-Plug 'junegunn/fzf'
+    Plug 'tpope/vim-commentary'
+    " sometimes ctrl+/ is understood as ctrl+_
+    nmap <C-_> <S-v> gc 
+    nmap <C-/> <S-v> gc 
+    vmap <C-/> gc
+    vmap <C-_> gc
 
-Plug 'wsdjeg/FlyGrep.vim'
+    " Plug 'junegunn/fzf'
 
-Plug 'JuliaEditorSupport/julia-vim'
+    Plug 'wsdjeg/FlyGrep.vim'
+    nnoremap <C-f> :FlyGrep<cr>
 
-Plug 'jpalardy/vim-slime'
+    Plug 'JuliaEditorSupport/julia-vim'
+    let g:latex_to_unicode_auto = 1
 
-Plug 'autozimu/LanguageClient-neovim', {
-    \ 'branch': 'next',
-    \ 'do': 'bash install.sh',
-    \ }
+    Plug 'jpalardy/vim-slime'
+    let g:slime_target = "tmux"
+    let g:slime_paste_file = "/tmp/vim-slime"
+    let g:slime_default_config = {"socket_name": "default", "target_pane": "{right-of}"}
 
-Plug 'airblade/vim-gitgutter'
+    " Plug 'neovim/nvim-lsp'
 
-Plug 'zhimsel/vim-stay'
+    " Plug 'autozimu/LanguageClient-neovim', {
+    "     \ 'branch': 'next',
+    "     \ 'do': 'bash install.sh',
+    "     \ }
+
+    Plug 'airblade/vim-gitgutter'
+
+    Plug 'zhimsel/vim-stay'
+    set viewoptions=cursor,folds,slash,unix
+    set viewoptions-=options
+
 call plug#end()
 
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
+" " LanguageClient-neovim config
+" " Required for operations modifying multiple buffers like rename.
+" set hidden
 
-" vim-stay options
-set viewoptions=cursor,folds,slash,unix
-set viewoptions-=options
+" let g:LanguageClient_serverCommands = {
+"     \ 'python': ['~/Software/anaconda3/bin/pyls'],
+"     \ }
 
-let NERDTreeShowHidden=1
-map <C-q> :NERDTreeToggle<CR>
-let NERDTreeMinimalUI = 1 " remove the ? from the top
-let NERDTreeDirArrows = 1
+" function LC_maps()
+"   if has_key(g:LanguageClient_serverCommands, &filetype)
+"     nnoremap <F5> :call LanguageClient_contextMenu()<CR>
+"     nnoremap <buffer> <silent> K :call LanguageClient#textDocument_hover()<cr>
+"     nnoremap <buffer> <silent> gd :call LanguageClient#textDocument_definition()<CR>
+"     nnoremap <buffer> <silent> gr :call LanguageClient#textDocument_references()<CR>
+"     nnoremap <buffer> <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
+"   endif
+" endfunction
+" autocmd FileType * call LC_maps()
+" set formatexpr=LanguageClient#textDocument_rangeFormatting_sync()
 
-nnoremap <C-f> :FlyGrep<cr>
-
-nmap <C-_> <S-v> gc 
-nmap <C-/> <S-v> gc 
-vmap <C-/> gc
-vmap <C-_> gc
-
-let g:slime_target = "tmux"
-let g:slime_paste_file = "/tmp/vim-slime"
-let g:slime_default_config = {"socket_name": "default", "target_pane": "{right-of}"}
-
-" julia-vim
-let g:latex_to_unicode_auto = 1
-
-" LanguageClient-neovim config
-" Required for operations modifying multiple buffers like rename.
-set hidden
-
-let g:LanguageClient_serverCommands = {
-    \ 'python': ['~/Software/anaconda3/bin/pyls'],
-    \ }
-
-function LC_maps()
-  if has_key(g:LanguageClient_serverCommands, &filetype)
-    nnoremap <F5> :call LanguageClient_contextMenu()<CR>
-    nnoremap <buffer> <silent> K :call LanguageClient#textDocument_hover()<cr>
-    nnoremap <buffer> <silent> gd :call LanguageClient#textDocument_definition()<CR>
-    nnoremap <buffer> <silent> gr :call LanguageClient#textDocument_references()<CR>
-    nnoremap <buffer> <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
-  endif
-endfunction
-autocmd FileType * call LC_maps()
-set formatexpr=LanguageClient#textDocument_rangeFormatting_sync()
