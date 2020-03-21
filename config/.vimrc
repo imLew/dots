@@ -52,7 +52,7 @@ endif
 set ignorecase
 set smartcase
 
-set completeopt=menuone,noselect
+set completeopt=menuone
 
 " fix backspace on mac
 set backspace=indent,eol,start
@@ -63,7 +63,6 @@ set foldmethod=indent
 
 nnoremap Y y$
 
-" plugins (vim native manager)
 source ~/.vim/vimrc-source/visual-at.vim
 
 " packadd SimpylFold
