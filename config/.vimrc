@@ -135,13 +135,6 @@ call plug#begin()
     let g:slime_paste_file = "/tmp/vim-slime"
     let g:slime_default_config = {"socket_name": "default", "target_pane": "{right-of}"}
 
-    " Plug 'neovim/nvim-lsp'
-
-    " Plug 'autozimu/LanguageClient-neovim', {
-    "     \ 'branch': 'next',
-    "     \ 'do': 'bash install.sh',
-    "     \ }
-
     Plug 'airblade/vim-gitgutter'
 
     Plug 'zhimsel/vim-stay'
