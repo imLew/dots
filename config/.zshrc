@@ -31,6 +31,7 @@ fine-time)
 ZSH_THEME="dst"
 
 plugins=(
+    zsh-syntax-highlighting
     vi-mode
     python
     pip
