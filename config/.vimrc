@@ -20,6 +20,9 @@ set encoding=utf-8
 set number relativenumber
 set showcmd
 
+" allow unsaved buffers to be hidden (ie not displayed)
+set hidden
+
 filetype plugin indent on
 
 "By default use a tab width of 4 space chars.
@@ -30,7 +33,6 @@ set tabstop=4       " The width of a TAB is set to 4.
 set shiftwidth=4    " Indents will have a width of 4.
 set softtabstop=4   " Sets the number of columns for a TAB.
 set expandtab       " Expand TABs to spaces.
-set textwidth=0
 
 if has("autocmd")
     autocmd BufNewFile,BufRead *.ts,*.js,*.tsx,*.jsx set filetype=typescript
@@ -52,7 +54,12 @@ endif
 set ignorecase
 set smartcase
 
+set splitbelow
+set splitright
+
 set completeopt=menuone
+
+set noshowmode
 
 " fix backspace on mac
 set backspace=indent,eol,start
@@ -122,24 +129,3 @@ call plug#begin()
     set viewoptions-=options
 
 call plug#end()
-
-" " LanguageClient-neovim config
-" " Required for operations modifying multiple buffers like rename.
-" set hidden
-
-" let g:LanguageClient_serverCommands = {
-"     \ 'python': ['~/Software/anaconda3/bin/pyls'],
-"     \ }
-
-" function LC_maps()
-"   if has_key(g:LanguageClient_serverCommands, &filetype)
-"     nnoremap <F5> :call LanguageClient_contextMenu()<CR>
-"     nnoremap <buffer> <silent> K :call LanguageClient#textDocument_hover()<cr>
-"     nnoremap <buffer> <silent> gd :call LanguageClient#textDocument_definition()<CR>
-"     nnoremap <buffer> <silent> gr :call LanguageClient#textDocument_references()<CR>
-"     nnoremap <buffer> <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
-"   endif
-" endfunction
-" autocmd FileType * call LC_maps()
-" set formatexpr=LanguageClient#textDocument_rangeFormatting_sync()
-
