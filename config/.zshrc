@@ -41,9 +41,6 @@ plugins=(
     git 
     compleat
 )
-# acoording to SE these lines will fix the deprecation warning for the
-# git-completion
-autoload compinit -u
 
 #after OMZ setup is complete source it
 source $ZSH/oh-my-zsh.sh
@@ -57,10 +54,12 @@ export EDITOR='vim'
 
 alias codna="conda"
 alias gti="git"
+alias ffs="sudo"
 
 alias zshconfig="vim ~/.zshrc"
 alias vimconfig="vim ~/.vimrc"
 alias tmuxconfig="vim ~/.tmux.conf"
+alias i3config="vim ~/.i3/config"
 if [ -x "$(command -v systemctl)" ]; then
     function suspend(){
 	    	echo "Will suspend in $1"; sleep $1; systemctl suspend
@@ -74,6 +73,7 @@ if [ -x "$(command -v nvim)" ]; then
     alias zshconfig="nvim ~/.zshrc"
     alias vimconfig="nvim ~/.vimrc"
     alias tmuxconfig="nvim ~/.tmux.conf"
+    alias i3config="nvim ~/.i3/config"
     export EDITOR='nvim'
 fi
 
