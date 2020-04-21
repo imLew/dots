@@ -68,15 +68,25 @@ set autoindent
 
 set foldmethod=indent
 
+set mouse+=a
+
 nnoremap Y y$
 
-source ~/.vim/vimrc-source/visual-at.vim
-
-" packadd SimpylFold
-" let g:SimpylFold_docstring_preview=1
-
-" packadd FastFold
-" let g:fastfold_savehook = 0
+" faster copy past and save and exit
+nnoremap <Leader>Y "+Y
+vnoremap <Leader>Y "+Y
+nnoremap <Leader>P "+P
+vnoremap <Leader>P "+P
+nnoremap <Leader>y "+y
+vnoremap <Leader>y "+y
+nnoremap <Leader>p "+p
+vnoremap <Leader>p "+p
+nnoremap <Leader>q :q<CR>
+nnoremap <Leader>Q :qa<CR>
+nnoremap <Leader>w :w<CR>
+nnoremap <Leader>W :wa<CR>
+nnoremap gb :bn<CR>
+nnoremap gB :bp<CR>
 
 
 call plug#begin()
