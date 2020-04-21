@@ -88,8 +88,18 @@ nnoremap <Leader>W :wa<CR>
 nnoremap gb :bn<CR>
 nnoremap gB :bp<CR>
 
+source ~/.vim/vimrc-source/visual-at.vim
 
 call plug#begin()
+
+    Plug 'lervag/vimtex'
+    let g:vimtex_quickfix_latexlog = {'default' : 0}
+    let g:vimtex_quickfix_mode = 1
+    " let g:vimtex_complete_enabled = 0
+    " Disable custom warnings based on regexp
+    let g:vimtex_quickfix_ignore_filters = [
+          \ 'while executing',
+          \]
 
     Plug 'vim-airline/vim-airline'
     let g:airline#extensions#tabline#enabled = 1
