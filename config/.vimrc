@@ -101,6 +101,10 @@ call plug#begin()
           \ 'while executing',
           \]
 
+    Plug 'michaeljsmith/vim-indent-object'
+
+    Plug 'vim-scripts/argtextobj.vim'
+
     Plug 'vim-airline/vim-airline'
     let g:airline#extensions#tabline#enabled = 1
     let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
@@ -140,5 +144,8 @@ call plug#begin()
     Plug 'zhimsel/vim-stay'
     set viewoptions=cursor,folds,slash,unix
     set viewoptions-=options
+
+    Plug 'luochen1990/rainbow'
+    let g:rainbow_active = 1
 
 call plug#end()
