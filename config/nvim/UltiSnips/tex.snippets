@@ -1,0 +1,89 @@
+global !p
+texMathZones = ['texMathZone' + x for x in ['A', 'AS', 'B', 'BS', 'C', 'CS', 'D', 'DS', 'E', 'ES', 'F', 'FS', 'G', 'GS', 'H', 'HS', 'I', 'IS', 'J', 'JS', 'K', 'KS', 'L', 'LS', 'DS', 'V', 'W', 'X', 'Y', 'Z', 'AmsA', 'AmsB', 'AmsC', 'AmsD', 'AmsE', 'AmsF', 'AmsG', 'AmsAS', 'AmsBS', 'AmsCS', 'AmsDS', 'AmsES', 'AmsFS', 'AmsGS' ]]
+texIgnoreMathZones = ['texMathText']
+texMathZoneIds = vim.eval('map('+str(texMathZones)+", 'hlID(v:val)')")
+texIgnoreMathZoneIds = vim.eval('map('+str(texIgnoreMathZones)+", 'hlID(v:val)')")
+ignore = texIgnoreMathZoneIds[0]
+def math():
+	synstackids = vim.eval("synstack(line('.'), col('.') - (col('.')>=2 ? 1 : 0))")
+	try:
+		first = next(i for i in reversed(synstackids) if i in texIgnoreMathZoneIds or i in texMathZoneIds)
+		return first != ignore
+	except StopIteration:
+		return False
+endglobal
+
+# snippet \beg "begin{} / end{}" bA
+# \begin{$1}
+# 	$2
+# \end{$1}
+# $0
+# endsnippet
+
+snippet mk "Math" wA
+$${1}$`!p
+if t[2] and t[2][0] not in [',', '.', '?', '-', ' ']:
+    snip.rv = ' '
+else:
+    snip.rv = ''
+`$2
+endsnippet
+
+context "math()"
+snippet \sum "sum with auto sub and super scripts" A
+\sum_{$1}^{$2}$0
+endsnippet
+
+context "math()"
+snippet // "quicker fraction" A
+\frac{$1}{$2}$0
+endsnippet
+
+context "math()"
+snippet \left "left right automatically" A
+\left$1
+`!p 
+if len(t[1]) > 0:
+	snip.rv =r"\right"+{'(':')', '<':'>', '{':'}', '[':']'}[t[1][0]]`
+endsnippet
+
+snippet \ref "equation references in paratheses" A
+(\ref{$1})$0
+endsnippet
+
+snippet "\\?beg(in)?( (\S+))?" "begin{} / end{}" br
+\begin{${1:`!p
+snip.rv = match.group(3) if match.group(2) is not None else "something"`}}
+    ${2:${VISUAL}}
+\end{$1}$0
+endsnippet
+
+context "math()"
+snippet "c([A-Z])" "math cal" rA
+\mathcal{`!p snip.rv = match.group(1)`}
+endsnippet
+
+context "math()"
+snippet "b([A-Z])" "blackboard bold" rA
+\mathbb{`!p snip.rv = match.group(1)`}
+endsnippet
+
+context "math()"
+snippet "mt([A-Za-z]+)([^A-Za-z])" "math text" rA
+\text{`!p snip.rv = match.group(1)`}`!p snip.rv = match.group(2) if match.group(2) != '\t' else ''`
+endsnippet
+
+context "math()"
+snippet "([a-zA-Z])hat" "hat" riA
+\hat{`!p snip.rv=match.group(1)`}
+endsnippet
+
+context "math()"
+snippet nab "gradient symbol" 
+\nabla
+endsnippet
+
+context "math()"
+snippet nabla "gradient automatically" A
+\nabla
+endsnippet
