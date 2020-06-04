@@ -113,7 +113,7 @@ export LC_MONETARY=en_US.UTF-8
 export LC_MESSAGES=en_US.UTF-8
 
 # add conda completion to fpath
-fpath+=$HOME/.oh-my-zsh/conda-zsh-completion
+fpath+=$HOME/.oh-my-zsh/plugins/conda-zsh-completion
 zstyle ':completion::complete:*' use-cache 1
 zstyle ":conda_zsh_completion:*" use-groups true
 compinit conda

@@ -1,5 +1,5 @@
 syntax on
-colorscheme escuro
+colorscheme windflower
 
 " Better display for messages
 set cmdheight=2
@@ -61,10 +61,12 @@ set completeopt=menuone
 
 set noshowmode
 
+set nospell
+
 " fix backspace on mac
 set backspace=indent,eol,start
 
-set autoindent
+" set autoindent
 
 set foldmethod=indent
 
@@ -75,31 +77,52 @@ nnoremap Y y$
 " faster copy past and save and exit
 nnoremap <Leader>Y "+Y
 vnoremap <Leader>Y "+Y
-nnoremap <Leader>P "+P
-vnoremap <Leader>P "+P
+nnoremap <Leader>P O<Esc>"+P
+vnoremap <Leader>P O<Esc>"+P
 nnoremap <Leader>y "+y
 vnoremap <Leader>y "+y
-nnoremap <Leader>p "+p
-vnoremap <Leader>p "+p
+nnoremap <Leader>p o<Esc>"+p
+vnoremap <Leader>p o<Esc>"+p
 nnoremap <Leader>q :q<CR>
 nnoremap <Leader>Q :qa<CR>
 nnoremap <Leader>w :w<CR>
 nnoremap <Leader>W :wa<CR>
+
+" cycle through buffers easily like tabs
 nnoremap gb :bn<CR>
 nnoremap gB :bp<CR>
+
+" open help in new tab
+" command! TABHELP tab help
+cabbrev th tab help
 
 source ~/.vim/vimrc-source/visual-at.vim
 
 call plug#begin()
 
+    Plug 'KeitaNakamura/tex-conceal.vim', {'for': 'tex'} 
+    let g:tex_superscripts= "[0-9a-zA-W.,:;+-<>/()=]"
+    let g:tex_subscripts= "[0-9aehijklmnoprstuvxy,+-/().]"
     Plug 'lervag/vimtex'
     let g:vimtex_quickfix_latexlog = {'default' : 0}
-    let g:vimtex_quickfix_mode = 1
+    let g:vimtex_quickfix_mode = 2
+    set conceallevel=2
+    let g:tex_conceal='abdmg'
+    " let g:vimtex_view_general_viewer = 'okular'
+    " let g:vimtex_view_general_options = '--unique file:@pdf\#src:@line@tex'
+    " let g:vimtex_view_general_options_latexmk = '--unique'
     " let g:vimtex_complete_enabled = 0
     " Disable custom warnings based on regexp
     let g:vimtex_quickfix_ignore_filters = [
           \ 'while executing',
           \]
+    " clear highlighting of concealed code
+    hi clear Conceal
+
+    Plug 'sirver/ultisnips'
+    let g:UltiSnipsExpandTrigger = '<tab>'
+    let g:UltiSnipsJumpForwardTrigger = '<tab>'
+    let g:UltiSnipsJumpBackwardTrigger = '<s-tab>'
 
     Plug 'michaeljsmith/vim-indent-object'
 
@@ -115,7 +138,7 @@ call plug#begin()
     let NERDTreeShowHidden=1
     map <C-q> :NERDTreeToggle<CR>
     let NERDTreeMinimalUI = 1 " remove the ? from the top
-    let NERDTreeDirArrows = 1
+    let NERDTreeDirArrows = 1 
 
     Plug 'christoomey/vim-tmux-navigator'
 
@@ -133,6 +156,7 @@ call plug#begin()
 
     Plug 'JuliaEditorSupport/julia-vim'
     let g:latex_to_unicode_auto = 1
+    let g:latex_to_unicode_keymap = 1
 
     Plug 'jpalardy/vim-slime'
     let g:slime_target = "tmux"
@@ -149,3 +173,6 @@ call plug#begin()
     let g:rainbow_active = 1
 
 call plug#end()
+
+set exrc
+set secure
