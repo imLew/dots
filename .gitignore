@@ -3,4 +3,5 @@ config/.vim/view
 __pycache__/
 config/.vim/autoload/
 config/.vim/plugged/
+config/.vim/undodir
 

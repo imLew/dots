@@ -40,6 +40,11 @@ snippet // "quicker fraction" A
 endsnippet
 
 context "math()"
+snippet '((\d+)|(\d*)(\\)?([A-Za-z]+)((\^|_)(\{\d+\}|\d))*)/' "Fraction" wrA
+\\frac{`!p snip.rv = match.group(1)`}{$1}$0
+endsnippet
+
+context "math()"
 snippet \left "left right automatically" A
 \left$1
 `!p 
