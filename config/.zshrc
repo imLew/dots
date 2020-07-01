@@ -54,7 +54,7 @@ export EDITOR='vim'
 
 alias codna="conda"
 alias gti="git"
-alias ffs="sudo"
+alias ffs="sudo !!"
 
 alias zshconfig="vim ~/.zshrc"
 alias vimconfig="vim ~/.vimrc"
