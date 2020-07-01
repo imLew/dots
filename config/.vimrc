@@ -51,6 +51,9 @@ if has("autocmd")
     augroup END
 endif
 
+set undofile
+set undodir=~/.vim/undodir
+
 set ignorecase
 set smartcase
 
@@ -72,7 +75,15 @@ set foldmethod=indent
 
 set mouse+=a
 
+" necessary mappings
 nnoremap Y y$
+
+" keep visual selection after indenting
+vmap > >gv
+vmap < <gv
+
+" quickly execute q macro
+nnoremap Q @q
 
 " faster copy past and save and exit
 nnoremap <Leader>Y "+Y
