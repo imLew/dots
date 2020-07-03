@@ -1,4 +1,5 @@
 #!/bin/sh
+DOTS="$(pwd)"
 
 #install oh-my-zsh
 cd $HOME
@@ -12,38 +13,7 @@ if [ -d "$HOME/.oh-my-zsh" ]; then
 	git merge master
 fi
 
-#install vim plugins
-mkdir -p $HOME/.vim/pack/plugins/opt/
-if [ -d "$HOME/.vim/pack/plugins/opt/" ]; then
-	cd $HOME/.vim/pack/plugins/opt/
-	echo "Downloading plugins for vim\n"
-
-	PLUGIN_REPOS=(
-	"https://github.com/w0rp/ale.git"
-	"https://github.com/ctrlpvim/ctrlp.vim.git"
-	"https://github.com/dyng/ctrlsf.vim.git"
-	"https://github.com/Konfekt/FastFold.git"
-	"https://github.com/scrooloose/nerdtree.git"
-	"https://github.com/tmhedberg/SimpylFold.git"
-	"https://github.com/leafgarland/typescript-vim.git"
-	"https://github.com/vim-airline/vim-airline"
-    "git@github.com:JuliaEditorSupport/julia-vim.git"
-	"https://github.com/airblade/vim-gitgutter.git"
-	"https://github.com/peitalin/vim-jsx-typescript.git"
-	"https://github.com/sheerun/vim-polyglot.git"
-	"https://github.com/zhimsel/vim-stay.git"
-	"https://github.com/tpope/vim-surround.git"
-	"https://github.com/christoomey/vim-tmux-navigator.git"
-	"https://github.com/Valloric/YouCompleteMe.git"
-	)
-	for rep in "${PLUGIN_REPOS[@]}"; do
-	    if [ ! -d "$rep" ]; then
-		    git clone $rep
-	    else
-		    echo "$rep already exists, will pull instead of cloning"
-		    cd $rep
-		    git pull
-		    cd ..
-	    fi
-	done
-fi
+# install vim-plug
+curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+# download plugins found in vimrc
+/usr/bin/python "$DOTS/install_vim_plugins.py"
