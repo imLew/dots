@@ -1,7 +1,8 @@
-config/.vim/pack
-config/.vim/view
+config/dotfiles/vim/pack
+config/dotfiles/vim/colors
+config/dotfiles/vim/view
 __pycache__/
-config/.vim/autoload/
-config/.vim/plugged/
-config/.vim/undodir
+config/dotfiles/vim/autoload/
+config/dotfiles/vim/plugged/
+config/dotfiles/vim/undodir
 
