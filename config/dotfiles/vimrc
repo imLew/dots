@@ -1,5 +1,4 @@
 syntax on
-colorscheme windflower
 
 " Better display for messages
 set cmdheight=2
@@ -183,7 +182,10 @@ call plug#begin()
     Plug 'luochen1990/rainbow'
     let g:rainbow_active = 1
 
+    Plug 'mushanyoung/vim-windflower'
+
 call plug#end()
 
+colorscheme windflower
 set exrc
 set secure
