@@ -118,10 +118,10 @@ call plug#begin()
     let g:vimtex_quickfix_mode = 2
     set conceallevel=2
     let g:tex_conceal='abdmg'
-    " let g:vimtex_view_general_viewer = 'okular'
-    " let g:vimtex_view_general_options = '--unique file:@pdf\#src:@line@tex'
-    " let g:vimtex_view_general_options_latexmk = '--unique'
-    " let g:vimtex_complete_enabled = 0
+    let g:vimtex_view_general_viewer = 'okular'
+    let g:vimtex_view_general_options = '--unique file:@pdf\#src:@line@tex'
+    let g:vimtex_view_general_options_latexmk = '--unique'
+    let g:vimtex_complete_enabled = 0
     " Disable custom warnings based on regexp
     let g:vimtex_quickfix_ignore_filters = [
           \ 'while executing',
