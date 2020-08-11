@@ -5,8 +5,8 @@ dot_dir = os.path.expanduser("~/dots")
 home_dir = os.path.expanduser("~")
 filepath = ''
 for p, _, f in os.walk(dot_dir):
-    if ".vimrc" in f:
-        filepath = p+"/.vimrc"
+    if "vimrc" in f:
+        filepath = p+"/vimrc"
 
 if not filepath:
     raise Exception("Couldn't find vimrc!")
