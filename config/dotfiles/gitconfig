@@ -1,0 +1,8 @@
+[user]
+	email = kol@posteo.de
+	name = lew
+[alias]
+    s = "status"
+    c = "commit"
+    co = "checkout"
+
