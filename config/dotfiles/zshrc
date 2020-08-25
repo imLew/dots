@@ -45,6 +45,15 @@ plugins=(
 #after OMZ setup is complete source it
 source $ZSH/oh-my-zsh.sh
 
+autoload -Uz zmv
+
+# Update the command line to include timestamp of when commands start
+RPROMPT='[%D{%L:%M:%S %p}]'
+TMOUT=1
+TRAPALRM() {
+    zle reset-prompt
+}
+
 # Uncomment the following line to display red dots whilst waiting for completion.
 COMPLETION_WAITING_DOTS="true"
 
@@ -59,7 +68,7 @@ alias ffs="sudo !!"
 alias zshconfig="vim ~/.zshrc"
 alias vimconfig="vim ~/.vimrc"
 alias tmuxconfig="vim ~/.tmux.conf"
-alias i3config="vim ~/.i3/config"
+alias i3config="vim ~/.config/i3/config"
 if [ -x "$(command -v systemctl)" ]; then
     function suspend(){
 	    	echo "Will suspend in $1"; sleep $1; systemctl suspend
@@ -123,3 +132,19 @@ if [ -f "$HOME/.config/conda_setup" ]; then
 fi
 
 eval $(thefuck --alias)
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/home/lew/Software/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/home/lew/Software/anaconda3/etc/profile.d/conda.sh" ]; then
+        . "/home/lew/Software/anaconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/home/lew/Software/anaconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
+
