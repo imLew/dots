@@ -5,4 +5,7 @@
     s = "status"
     c = "commit"
     co = "checkout"
+    wt = "worktree"
 
+[core]
+	excludesFile = ~/.config/gitignore
