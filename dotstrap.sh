@@ -1,5 +1,16 @@
 DOTS="$(pwd)"
 
+function link_config_dir(){
+  HOMECONFIGDIR="$HOME/.config/$(basename $1)"
+  DIRNAME=$1
+	if [ -e $HOMECONFIGDIR ]; then
+		mv $HOMECONFIGDIR "$HOMECONFIGDIR.bkp"
+		echo "Moved existing $HOMECONFIGDIR  to $HOMECONFIGDIR.bkp."
+	fi
+  echo "linking $DIRNAME to $HOMECONFIGDIR"
+	ln -s $DIRNAME $HOMECONFIGDIR 
+}
+
 function link_dotfile(){
   HOMEFILE="$HOME/.$(basename $1)"
   DOTFILE=$1
@@ -10,9 +21,13 @@ function link_dotfile(){
 	ln -s $DOTFILE $HOMEFILE
 }
 
-for file in "$DOTS/config/dotfiles"/*; do
-	link_dotfile $file
+for file in "$DOTS/config/dotconfig"/*; do
+	link_config_dir $file
 done
+
+# for file in "$DOTS/config/dotfiles"/*; do
+# 	link_dotfile $file
+# done
 
 # if [ -d "$HOME/.config" ]; then
 # 	if [ -e "$DOTS/config/nvim"  ]; then
