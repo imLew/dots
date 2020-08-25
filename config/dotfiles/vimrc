@@ -114,6 +114,7 @@ call plug#begin()
     let g:tex_superscripts= "[0-9a-zA-W.,:;+-<>/()=]"
     let g:tex_subscripts= "[0-9aehijklmnoprstuvxy,+-/().]"
     Plug 'lervag/vimtex'
+    let g:tex_flavor='tex'
     let g:vimtex_quickfix_latexlog = {'default' : 0}
     let g:vimtex_quickfix_mode = 2
     set conceallevel=2
