@@ -25,10 +25,13 @@ for file in "$DOTS/config/dotconfig"/*; do
 	link_config_dir $file
 done
 
-# for file in "$DOTS/config/dotfiles"/*; do
-# 	link_dotfile $file
-# done
+for file in "$DOTS/config/dotfiles"/*; do
+	link_dotfile $file
+done
 
+for file in "$DOTS/scripts"/*; do
+  ln -s $file "/opt/bin/$(basename $file)"
+done
 # if [ -d "$HOME/.config" ]; then
 # 	if [ -e "$DOTS/config/nvim"  ]; then
 #     mv "$DOTS/config/nvim" "$BACKUP_DOTS/nvim.bkp" 
