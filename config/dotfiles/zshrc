@@ -65,6 +65,15 @@ alias codna="conda"
 alias gti="git"
 alias ffs="sudo !!"
 
+if [ -x "$(command -v trash-put)" ]; then
+    alias rm='printf "%s" "Use tp (trash-put) to move this to trash of \rm if you are sure"'
+    alias tp="trash-put"
+fi
+
+if [ -x "$(command -v kak)" ]; then
+    alias kakconfig="kak ~/.config/kak/kakrc"
+    alias k="kak"
+fi
 alias zshconfig="vim ~/.zshrc"
 alias vimconfig="vim ~/.vimrc"
 alias tmuxconfig="vim ~/.tmux.conf"
@@ -82,7 +91,7 @@ if [ -x "$(command -v nvim)" ]; then
     alias zshconfig="nvim ~/.zshrc"
     alias vimconfig="nvim ~/.vimrc"
     alias tmuxconfig="nvim ~/.tmux.conf"
-    alias i3config="nvim ~/.i3/config"
+    alias i3config="nvim ~/.config/i3/config"
     export EDITOR='nvim'
 fi
 
