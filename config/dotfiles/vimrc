@@ -9,7 +9,10 @@ set path+=**
 command! MakeTags !ctags -R .
 
 " always show signcolumns
-" set signcolumn=yes
+set signcolumn=yes
+
+" show ruler
+set colorcolumn=81
 
 " set updatetime=100
 
@@ -22,6 +25,7 @@ set showcmd
 " allow unsaved buffers to be hidden (ie not displayed)
 set hidden
 
+set autoindent
 filetype plugin indent on
 
 "By default use a tab width of 4 space chars.
@@ -67,8 +71,6 @@ set nospell
 
 " fix backspace on mac
 set backspace=indent,eol,start
-
-" set autoindent
 
 set foldmethod=indent
 
@@ -184,9 +186,10 @@ call plug#begin()
     let g:rainbow_active = 1
 
     Plug 'mushanyoung/vim-windflower'
-
+    Plug 'lifepillar/vim-solarized8'
 call plug#end()
 
-colorscheme windflower
+" set background=light
+colorscheme solarized8
 set exrc
 set secure
