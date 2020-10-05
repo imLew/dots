@@ -6,6 +6,7 @@
     c = "commit"
     co = "checkout"
     wt = "worktree"
+    b = "branch"
 
 [core]
 	excludesFile = ~/.config/gitignore
