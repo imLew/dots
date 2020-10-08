@@ -1,0 +1,51 @@
+colorscheme desertex
+
+### color cursor differently when in insert mode
+# set-face global PrimaryCursor black,bright-yellow+F
+# set-face global SecondaryCursor black,bright-green+F
+
+# reset cursor color when leaving insert mode
+hook global ModeChange .*:insert:.*  %{
+    unset-face window PrimaryCursor
+    unset-face window SecondaryCursor
+}
+
+# change to blue cursor in insert mode
+hook global ModeChange .*:insert %{
+    set-face window PrimaryCursor black,bright-cyan+F
+    set-face window SecondaryCursor black,bright-blue+F
+}
+
+# line numbers
+add-highlighter global/ number-lines -relative -hlcursor
+
+# custom keys
+# old vim habbits
+map global normal D '<a-l>d' -docstring 'delete to end of line'
+map global normal Y '<a-l>y' -docstring 'yank to end of line'
+map global normal 0 '<a-h>;' -docstring 'select first character on line'
+# map <c-/> to comment
+# (to get the keycode use <c-v> in insert mode and hit the combination
+map global normal '' :comment-line<ret> -docstring 'use <c-/> to toggle comment for selection'
+# map 'leader' key to backspace
+map global normal <backspace> , -docstring 'use backspace as leader'
+
+# kakoune plugin manager, similar to vimplug
+# just `plug URL`
+source "%val{config}/plugins/plug.kak/rc/plug.kak"
+
+### plug-ins
+plug https://github.com/TeddyDD/kakoune-wiki %{
+    wiki-setup %sh{ echo /home/lew/Documents/wiki }
+}
+
+plug 'delapouite/kakoune-buffers' %{
+    map global user b ': enter-buffers-mode<ret>' -docstring 'buffers'
+    map global user B ': enter-user-mode -lock buffers<ret>' -docstring 'buffers (lock)'
+    hook global WinDisplay .* info-buffers
+}
+
+# this looks like a cool plug in but seems to have a problem
+# plug 'Delapouite/kakoune-registers' %{
+#     map global user r ': info-registers<ret>' -docstring 'show registers'
+# }
