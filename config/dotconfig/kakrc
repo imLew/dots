@@ -1,4 +1,4 @@
-colorscheme desertex
+colorscheme gruvbox
 
 ### color cursor differently when in insert mode
 # set-face global PrimaryCursor black,bright-yellow+F
@@ -49,3 +49,13 @@ plug 'delapouite/kakoune-buffers' %{
 # plug 'Delapouite/kakoune-registers' %{
 #     map global user r ': info-registers<ret>' -docstring 'show registers'
 # }
+
+plug "kak-lsp/kak-lsp" do %{
+        cargo install --locked --force --path .
+        eval %sh{kak-lsp --kakoune -s $kak_session}
+        hook global WinSetOption filetype=(python|julia) %{
+                lsp-enable-window
+        }
+}
+
+plug "andreyorst/smarttab.kak"
