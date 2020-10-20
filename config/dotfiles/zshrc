@@ -47,12 +47,12 @@ source $ZSH/oh-my-zsh.sh
 
 autoload -Uz zmv
 
-# Update the command line to include timestamp of when commands start
-RPROMPT='[%D{%L:%M:%S %p}]'
-TMOUT=1
-TRAPALRM() {
-    zle reset-prompt
-}
+# # Update the command line to include timestamp of when commands start
+# RPROMPT='[%D{%L:%M:%S %p}]'
+# TMOUT=1
+# TRAPALRM() {
+#     zle reset-prompt
+# }
 
 # Uncomment the following line to display red dots whilst waiting for completion.
 COMPLETION_WAITING_DOTS="true"
@@ -63,7 +63,7 @@ export EDITOR='vim'
 
 alias codna="conda"
 alias gti="git"
-alias ffs="sudo !!"
+alias du="du -h"
 
 if [ -x "$(command -v trash-put)" ]; then
     alias rm='printf "%s" "Use tp (trash-put) to move this to trash of \rm if you are sure"'
