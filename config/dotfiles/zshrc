@@ -40,6 +40,7 @@ plugins=(
     z 
     git 
     compleat
+    command-time
 )
 
 #after OMZ setup is complete source it
@@ -87,7 +88,7 @@ fi
 #     alias -g nvim="$HOME/Software/nvim.appimage"
 # fi
 if [ -x "$(command -v nvim)" ]; then
-    alias n="nvim"
+    alias n="TERM=xterm-256color nvim"
     alias zshconfig="nvim ~/.zshrc"
     alias vimconfig="nvim ~/.vimrc"
     alias tmuxconfig="nvim ~/.tmux.conf"
