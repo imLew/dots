@@ -79,6 +79,31 @@ set mouse+=a
 " necessary mappings
 nnoremap Y y$
 
+" remap * and # to highlight and only jump if the current word is the search
+" word and highlight is on
+function! StarJump(key)
+    " echo '\<' .. expand('<cword>') .. '\>'
+    " execute "let @/='\<'.expand('<cword>').'\>'<CR>"
+    if '\<' .. expand('<cword>') .. '\>' == getreg('/') && (&hlsearch)
+        if a:key == "*"
+            normal n
+        elseif a:key == "#"
+            normal N
+        endif
+    else
+        call setreg('/', '\<' .. expand('<cword>') .. '\>') 
+    endif
+    set hlsearch
+endfunction
+nmap <silent> * :call StarJump("*")<CR>
+nmap <silent> # :call StarJump("#")<CR>
+
+" turn off hlsearch when pressing esc
+nmap <silent> <ESC> :set nohlsearch<CR>
+
+" nmap <silent> * :let @/='\<'.expand('<cword>').'\>'<CR>:set hlsearch<cr>
+" nmap <silent> * :let @?='\<'.expand('<cword>').'\>'<CR>:set hlsearch<cr>
+
 " toggle hlsearch
 nnoremap <leader>h :set hlsearch!<cr>
 
@@ -192,14 +217,16 @@ call plug#begin()
     " Plug 'lifepillar/vim-solarized8'
     Plug 'sainnhe/gruvbox-material'
 
-    Plug 'nvim-treesitter/nvim-treesitter'
+    " Plug 'nvim-treesitter/nvim-treesitter'
 
     Plug 'neoclide/coc.nvim', { 'branch': 'release' }
 call plug#end()
 
 " set background=light
 colorscheme gruvbox-material
-let g:gruvbox_material_background = 'hard'
+" remove background highlight from comments
+highlight Comment cterm=None
+" let g:gruvbox_material_background = 'soft'
 set exrc
 set secure
 
