@@ -48,10 +48,9 @@ bindsym $mod+z exec --no-startup-id morc_menu
 #bindsym $mod+Ctrl+m exec terminal -e 'alsamixer'
 exec --no-startup-id start-pulseaudio-x11
 exec --no-startup-id pa-applet
-# exec --no-startup-id auto_brightness.py
 bindsym $mod+Ctrl+m exec pavucontrol
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5%; exec notify-send 'Volume Up' #increase sound volume
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5%; exec notify-send 'Volume Down'#increase sound volume
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 1 +5%
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 1 -5%
 
 ################################################################################################
 
