@@ -358,16 +358,17 @@ bar {
 	strip_workspace_numbers yes
 
     colors {
-        background #222D31
+        background $term_background
+        # background #222D31
         statusline #F9FAF9
         separator  #454947
 
 #                      border  backgr. text
-        focused_workspace  #F9FAF9 #16a085 #292F34
-        active_workspace   #595B5B #353836 #FDF6E3
-        inactive_workspace #595B5B #222D31 #EEE8D5
-        binding_mode       #16a085 #2C2C2C #F9FAF9
-        urgent_workspace   #16a085 #FDF6E3 #E5201D
+        focused_workspace  #F9FAF9 #656866 #FDF6E3
+        active_workspace   #595B5B #454846 #FDF6E3
+        inactive_workspace #595B5B $term_background #EEE8D5
+        binding_mode       #F9FAF9 #2C2C2C #F9FAF9
+        urgent_workspace   #F9FAF9 #FDF6E3 #E5201D
     }
 }
 
@@ -376,9 +377,9 @@ bar {
 
 # Theme colors
 # class                   border  backgr. text    indic.   child_border
-  client.focused          #9999AA #556064 #1ABC9C #80FFF9 #FDF6E3
-  client.focused_inactive #2F3D44 #556064 #1ABC9C #454948
-  client.unfocused        #1F2E40 #2F3D44 #109090 #1ABC9C #454948
+  client.focused          #9999AA #35393D #CECDCC #80FFF9 #FDF6E3
+  client.focused_inactive #2F3D44 #35393D #9AA5B0 #454948
+  client.unfocused        #1F2E40 #35393D #707880 #1ABC9C #454948
   client.urgent           #CB4B16 #FDF6E3 #1ABC9C #268BD2
   client.placeholder      #000000 #0c0c0c #ffffff #000000 
 
@@ -389,16 +390,16 @@ bar {
 #############################
 
 # Set inner/outer gaps
-gaps inner 0  # 14
-gaps outer 0  # -2
+gaps inner 10
+gaps outer -5
 
 # Additionally, you can issue commands with the following syntax. This is useful to bind keys to changing the gap size.
 # gaps inner|outer current|all set|plus|minus <px>
 # gaps inner all set 10
-# gaps outer all plus 5
+# gaps outer current plus 5
 
 # Smart gaps (gaps used if only more than one container on the workspace)
-# smart_gaps on
+smart_gaps on
 
 # Smart borders (draw borders around container only if it is not the only container on this workspace) 
 # on|no_gaps (on=always activate and no_gaps=only activate if the gap size to the edge of the screen is 0)
