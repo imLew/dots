@@ -11,3 +11,13 @@ source ~/.vimrc
 "   },
 " }
 " EOF
+
+" autocmd BufEnter * lua require'completion'.on_attach()
+
+" lua << EOF
+"     local nvim_lsp = require'nvim_lsp'
+"     local on_attach_vim = function()
+"         require'diagnostic'.on_attach()
+"     end
+"     nvim_lsp.julials.setup({on_attach=on_attach_vim})
+" EOF
