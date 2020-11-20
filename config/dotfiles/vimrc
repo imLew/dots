@@ -54,6 +54,10 @@ if has("autocmd")
     augroup END
 endif
 
+set wrap
+set linebreak
+set breakindent
+
 set undofile
 set undodir=~/.vim/undodir
 
