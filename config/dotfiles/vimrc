@@ -153,18 +153,17 @@ call plug#begin()
     let g:tex_flavor='tex'
     let g:vimtex_quickfix_latexlog = {'default' : 0}
     let g:vimtex_quickfix_mode = 2
-    set conceallevel=2
     let g:tex_conceal='abdmg'
     let g:vimtex_view_general_viewer = 'okular'
     let g:vimtex_view_general_options = '--unique file:@pdf\#src:@line@tex'
     let g:vimtex_view_general_options_latexmk = '--unique'
-    let g:vimtex_complete_enabled = 0
+    let g:vimtex_complete_enabled = 1
     " Disable custom warnings based on regexp
     let g:vimtex_quickfix_ignore_filters = [
           \ 'while executing',
+          \ '\hbox',
+          \ 'Marginpar'
           \]
-    " clear highlighting of concealed code
-    hi clear Conceal
 
     Plug 'sirver/ultisnips'
     let g:UltiSnipsExpandTrigger = '<tab>'
