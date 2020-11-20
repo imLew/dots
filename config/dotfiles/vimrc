@@ -220,35 +220,31 @@ call plug#begin()
     Plug 'luochen1990/rainbow'
     let g:rainbow_active = 1
 
+    " Plug 'Yggdroot/indentLine'
+    " let g:indentLine_char_list = ['¦', '┆', '┊']
+
     " Plug 'mushanyoung/vim-windflower'
     " Plug 'lifepillar/vim-solarized8'
     Plug 'sainnhe/gruvbox-material'
 
     " Plug 'nvim-treesitter/nvim-treesitter'
 
-    Plug 'neovim/nvim-lsp'
-    Plug 'autozimu/LanguageClient-neovim', {'branch': 'next', 'do': 'bash install.sh'}"
-    Plug 'nvim-lua/diagnostic-nvim'                                    
-    Plug 'nvim-lua/completion-nvim'
-    source ~/.vim/vimrc-source/langclient-nvim-julia-config.vim
-    " Plug 'neoclide/coc.nvim', { 'branch': 'release' }
-    " source ~/.vim/vimrc-source/coc-vimrc-config.vim
+    " Plug 'neovim/nvim-lsp'
+    " Plug 'autozimu/LanguageClient-neovim', {'branch': 'next', 'do': 'bash install.sh'}"
+    " Plug 'nvim-lua/diagnostic-nvim'                                    
+    " Plug 'nvim-lua/completion-nvim'
+    " source ~/.vim/vimrc-source/langclient-nvim-julia-config.vim
+    Plug 'neoclide/coc.nvim', { 'branch': 'release' }
+    source ~/.vim/vimrc-source/coc-vimrc-config.vim
 
 call plug#end()
-
-" if executable('julia')
-"   let g:julia_lsp = 'using LanguageServer, LanguageServer.SymbolServer; runserver()'
-"   autocmd User lsp_setup call lsp#register_server({
-"   \ 'name': 'julia',
-"   \ 'cmd': { server_info -> ['julia', '--startup-file=no', '--history-file=no', '-e', g:julia_lsp] },
-"   \ 'whitelist': ['julia'],
-"   \ })
-" endif
 
 " set background=light
 colorscheme gruvbox-material
 " remove background highlight from comments
 highlight Comment cterm=None
+
+autocmd FileType julia setlocal commentstring=##\ %s
 
 set exrc
 set secure
