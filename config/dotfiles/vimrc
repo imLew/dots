@@ -80,33 +80,35 @@ set foldmethod=indent
 
 set mouse+=a
 
+" opens search results in a window w/ links and highlight the matches
+command! -nargs=+ Grep execute 'silent grep! -I -r -n --exclude *.{json,pyc} . -e <args>' | copen | execute 'silent /<args>'
+" shift-control-* Greps for the word under the cursor
+:nmap <leader>g :Grep <c-r>=expand("<cword>")<cr><cr>
+
 " necessary mappings
 nnoremap Y y$
+
+nnoremap <c-e> 3<c-e>
+nnoremap <c-y> 3<c-y>
 
 " remap * and # to highlight and only jump if the current word is the search
 " word and highlight is on
 function! StarJump(key)
-    " echo '\<' .. expand('<cword>') .. '\>'
-    " execute "let @/='\<'.expand('<cword>').'\>'<CR>"
     if '\<' .. expand('<cword>') .. '\>' == getreg('/') && (&hlsearch)
-        if a:key == "*"
-            normal n
-        elseif a:key == "#"
-            normal N
+        if a:key == "#"
+            let v:searchforward=0
         endif
+        normal n
     else
         call setreg('/', '\<' .. expand('<cword>') .. '\>') 
     endif
     set hlsearch
 endfunction
 nmap <silent> * :call StarJump("*")<CR>
-nmap <silent> # :call StarJump("#")<CR>
+nmap <silent> # :call StarJump("#")<CR>:let v:searchforward=0<CR>
 
 " turn off hlsearch when pressing esc
 nmap <silent> <ESC> :set nohlsearch<CR>
-
-" nmap <silent> * :let @/='\<'.expand('<cword>').'\>'<CR>:set hlsearch<cr>
-" nmap <silent> * :let @?='\<'.expand('<cword>').'\>'<CR>:set hlsearch<cr>
 
 " toggle hlsearch
 nnoremap <leader>h :set hlsearch!<cr>
