@@ -55,6 +55,8 @@ autoload -Uz zmv
 #     zle reset-prompt
 # }
 
+export BAT_THEME="gruvbox"
+
 # Uncomment the following line to display red dots whilst waiting for completion.
 COMPLETION_WAITING_DOTS="true"
 
@@ -65,6 +67,8 @@ export EDITOR='vim'
 alias codna="conda"
 alias gti="git"
 alias du="du -h"
+
+alias sudo="sudo -E"
 
 if [ -x "$(command -v trash-put)" ]; then
     alias rm='printf "%s" "Use tp (trash-put) to move this to trash of \rm if you are sure"'
