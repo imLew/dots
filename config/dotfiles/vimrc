@@ -81,9 +81,10 @@ set foldmethod=indent
 set mouse+=a
 
 " opens search results in a window w/ links and highlight the matches
-command! -nargs=+ Grep execute 'silent grep! -I -r -n --exclude *.{json,pyc} . -e <args>' | copen | execute 'silent /<args>'
+command! -nargs=+ Grep execute 'silent grep! -I -r -n --exclude=\*.{json,pyc} -e <args>' | copen | execute 'silent /<args>'
 " shift-control-* Greps for the word under the cursor
-:nmap <leader>g :Grep <c-r>=expand("<cword>")<cr><cr>
+" :nmap <leader>g :Grep <c-r>=expand("<cword>")<cr><cr>
+" nmap <c-f> :Grep 
 
 " necessary mappings
 nnoremap Y y$
@@ -174,9 +175,7 @@ call plug#begin()
 
     Plug 'vim-scripts/argtextobj.vim'
 
-    " Plug 'vim-airline/vim-airline'
-    " let g:airline#extensions#tabline#enabled = 1
-    " let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
+    Plug 'tpope/vim-fugitive'
 
     Plug 'tpope/vim-surround'
 
@@ -198,9 +197,14 @@ call plug#begin()
     vmap <C-_> gc
 
     Plug 'junegunn/fzf'
-
-    " Plug 'wsdjeg/FlyGrep.vim'
-    " nnoremap <C-f> :FlyGrep<cr>
+    Plug 'junegunn/fzf.vim'
+    nmap <c-f> :Rg<CR>
+    silent! !git rev-parse --is-inside-work-tree
+    if v:shell_error == 0
+      noremap <C-p> :GFiles --cached --others --exclude-standard<CR>
+    else
+      noremap <C-p> :Files<CR>
+    endif
 
     Plug 'JuliaEditorSupport/julia-vim'
     let g:latex_to_unicode_auto = 1
