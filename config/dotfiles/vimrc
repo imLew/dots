@@ -247,6 +247,8 @@ call plug#begin()
     Plug 'neoclide/coc.nvim', { 'branch': 'release' }
     source ~/.vim/vimrc-source/coc-vimrc-config.vim
 
+    Plug 'justinmk/vim-sneak'
+
 call plug#end()
 
 " set background=light
