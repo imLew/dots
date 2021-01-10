@@ -147,6 +147,10 @@ source ~/.vim/vimrc-source/visual-at.vim
 
 call plug#begin()
 
+    Plug 'iamcco/markdown-preview.nvim'
+
+    Plug 'plasticboy/vim-markdown'
+
     Plug 'KeitaNakamura/tex-conceal.vim', {'for': 'tex'} 
     let g:tex_superscripts= "[0-9a-zA-W.,:;+-<>/()=]"
     let g:tex_subscripts= "[0-9aehijklmnoprstuvxy,+-/().]"
@@ -205,8 +209,10 @@ call plug#begin()
     else
       noremap <C-p> :Files<CR>
     endif
+    noremap <leader>b :Buffers<CR>
 
     Plug 'JuliaEditorSupport/julia-vim'
+    let g:latex_to_unicode_tab = 0
     let g:latex_to_unicode_auto = 1
     let g:latex_to_unicode_keymap = 1
 
@@ -248,7 +254,7 @@ colorscheme gruvbox-material
 " remove background highlight from comments
 highlight Comment cterm=None
 
-autocmd FileType julia setlocal commentstring=##\ %s
+" autocmd FileType julia setlocal commentstring=##\ %s
 
 set exrc
 set secure
