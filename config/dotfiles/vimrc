@@ -233,9 +233,6 @@ call plug#begin()
     Plug 'luochen1990/rainbow'
     let g:rainbow_active = 1
 
-    " Plug 'Yggdroot/indentLine'
-    " let g:indentLine_char_list = ['¦', '┆', '┊']
-
     " Plug 'mushanyoung/vim-windflower'
     " Plug 'lifepillar/vim-solarized8'
     Plug 'sainnhe/gruvbox-material'
@@ -249,8 +246,6 @@ call plug#begin()
     " source ~/.vim/vimrc-source/langclient-nvim-julia-config.vim
     Plug 'neoclide/coc.nvim', { 'branch': 'release' }
     source ~/.vim/vimrc-source/coc-vimrc-config.vim
-
-    Plug 'justinmk/vim-sneak'
 
 call plug#end()
 
