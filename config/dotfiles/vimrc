@@ -182,6 +182,7 @@ call plug#begin()
     Plug 'vim-scripts/argtextobj.vim'
 
     Plug 'tpope/vim-fugitive'
+    nnoremap <leader>G :Git 
 
     Plug 'tpope/vim-surround'
 
