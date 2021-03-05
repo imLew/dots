@@ -1,5 +1,3 @@
-syntax on
-
 " Better display for messages
 set cmdheight=2
 
@@ -255,6 +253,7 @@ call plug#end()
 colorscheme gruvbox-material
 " remove background highlight from comments
 highlight Comment cterm=None
+syntax on
 
 " autocmd FileType julia setlocal commentstring=##\ %s
 
