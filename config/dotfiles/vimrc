@@ -76,7 +76,8 @@ set backspace=indent,eol,start
 
 set foldmethod=indent
 
-set mouse+=a
+" enable mouse in normal mode and use multiple clicks to select word, line etc
+set mouse=nv
 
 " opens search results in a window w/ links and highlight the matches
 command! -nargs=+ Grep execute 'silent grep! -I -r -n --exclude=\*.{json,pyc} -e <args>' | copen | execute 'silent /<args>'
