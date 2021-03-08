@@ -67,6 +67,7 @@ export EDITOR='vim'
 alias codna="conda"
 alias gti="git"
 alias du="du -h"
+alias ydl="youtube-dl"
 
 alias sudo="sudo -E"
 
