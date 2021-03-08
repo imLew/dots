@@ -69,6 +69,10 @@ alias gti="git"
 alias du="du -h"
 alias ydl="youtube-dl"
 
+# show journalctl in bat for better scrolling
+function batjournal(){
+    journalctl --no-pager $@ | bat --paging --language toml --theme Nord --style grid
+}
 alias sudo="sudo -E"
 
 if [ -x "$(command -v trash-put)" ]; then
