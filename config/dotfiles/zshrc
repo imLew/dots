@@ -93,9 +93,17 @@ if [ -x "$(command -v systemctl)" ]; then
 	    	echo "Will suspend in $1"; sleep $1; systemctl suspend
 	}
 fi
-# if [ -e "$HOME/Software/nvim.appimage" ]; then
-#     alias -g nvim="$HOME/Software/nvim.appimage"
-# fi
+
+# fzf follow symlinks and show hidden files
+export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git'
+# alias fzn='vim $(fzf)'
+function fzn(){
+    FILE=$(fzf)
+    if [ $? -eq 0 ]; then
+        vim $FILE
+    fi
+}
+
 if [ -x "$(command -v nvim)" ]; then
     alias n="TERM=xterm-256color nvim"
     alias zshconfig="nvim ~/dots/config/dotfiles/zshrc"
@@ -103,6 +111,13 @@ if [ -x "$(command -v nvim)" ]; then
     alias tmuxconfig="nvim ~/dots/config/dotfiles/tmux.conf"
     alias i3config="nvim ~/dots/config/dotconfig/i3/config"
     export EDITOR='nvim'
+    # alias fzn='nvim $(fzf)'
+    function fzn(){
+        FILE=$(fzf)
+        if [ $? -eq 0 ]; then
+            nvim $FILE
+        fi
+    }
 fi
 
 # turn on vi mode
