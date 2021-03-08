@@ -84,10 +84,10 @@ if [ -x "$(command -v kak)" ]; then
     alias kakconfig="kak ~/.config/kak/kakrc"
     alias k="kak"
 fi
-alias zshconfig="vim ~/.zshrc"
-alias vimconfig="vim ~/.vimrc"
-alias tmuxconfig="vim ~/.tmux.conf"
-alias i3config="vim ~/.config/i3/config"
+alias zshconfig="vim ~/dots/config/dotfiles/zshrc"
+alias vimconfig="vim ~/dots/config/dotfiles/vimrc"
+alias tmuxconfig="vim ~/dots/config/dotfiles/tmux.conf"
+alias i3config="vim ~/dots/config/dotconfig/i3/config"
 if [ -x "$(command -v systemctl)" ]; then
     function suspend(){
 	    	echo "Will suspend in $1"; sleep $1; systemctl suspend
@@ -98,10 +98,10 @@ fi
 # fi
 if [ -x "$(command -v nvim)" ]; then
     alias n="TERM=xterm-256color nvim"
-    alias zshconfig="nvim ~/.zshrc"
-    alias vimconfig="nvim ~/.vimrc"
-    alias tmuxconfig="nvim ~/.tmux.conf"
-    alias i3config="nvim ~/.config/i3/config"
+    alias zshconfig="nvim ~/dots/config/dotfiles/zshrc"
+    alias vimconfig="nvim ~/dots/config/dotfiles/vimrc"
+    alias tmuxconfig="nvim ~/dots/config/dotfiles/tmux.conf"
+    alias i3config="nvim ~/dots/config/dotconfig/i3/config"
     export EDITOR='nvim'
 fi
 
