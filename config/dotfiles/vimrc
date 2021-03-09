@@ -205,6 +205,12 @@ call plug#begin()
 
     Plug 'junegunn/fzf'
     Plug 'junegunn/fzf.vim'
+    " redefine :Rg to also search git ignored files
+    command! -bang -nargs=* Rg
+      \ call fzf#vim#grep(
+      \   'rg --column --line-number --no-heading --color=always --no-ignore 
+      \   --smart-case -- '.shellescape(<q-args>), 1,
+      \   fzf#vim#with_preview(), <bang>0)
     nmap <c-f> :Rg<CR>
     silent! !git rev-parse --is-inside-work-tree
     if v:shell_error == 0
