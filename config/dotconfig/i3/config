@@ -237,13 +237,13 @@ for_window [class="qt5ct"] floating enable sticky enable border normal
 for_window [class="Qtconfig-qt4"] floating enable sticky enable border normal
 for_window [class="Simple-scan"] floating enable border normal
 for_window [class="(?i)System-config-printer.py"] floating enable border normal
-for_window [class="Skype"] floating enable border normal
+# for_window [class="Skype"] floating enable border normal
 for_window [class="Timeset-gui"] floating enable border normal
 for_window [class="(?i)virtualbox"] floating enable border normal
 for_window [class="Xfburn"] floating enable
 for_window [title="cuteSCAM"] floating enable border normal
-for_window [title="Signal"] floating enable
-for_window [title="Telegram"] floating enable
+# for_window [title="Signal"] floating enable
+# for_window [title="Telegram"] floating enable
 # move julia plots container up
 for_window [title="GKS QtTerm"] move up 
 
@@ -252,7 +252,7 @@ for_window [title="GKS QtTerm"] move up
 # for_window [class="Termite"] resize set 640 480
 
 # switch to workspace with urgent window automatically
-for_window [urgent=latest] focus
+# for_window [urgent=latest] focus
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
