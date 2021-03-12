@@ -247,8 +247,11 @@ for_window [class="Xfburn"] floating enable
 for_window [title="cuteSCAM"] floating enable border normal
 # for_window [title="Signal"] floating enable
 # for_window [title="Telegram"] floating enable
+
+# Perform other actions for specific windows
 # move julia plots container up
-for_window [title="GKS QtTerm"] move up 
+for_window [title="GKS QtTerm"] move up
+no_focus [title="GKS QtTerm"] 
 
 # default floating size for specific applications
 # for_window [class="Termite"] floating enable
