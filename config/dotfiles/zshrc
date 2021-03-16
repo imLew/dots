@@ -95,7 +95,7 @@ if [ -x "$(command -v systemctl)" ]; then
 fi
 
 # fzf follow symlinks and show hidden files
-export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git'
+export FZF_DEFAULT_COMMAND='fd --type f --hidden --no-ignore --follow --exclude .git'
 # alias fzn='vim $(fzf)'
 function fzn(){
     FILE=$(fzf)
