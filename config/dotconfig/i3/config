@@ -177,7 +177,7 @@ bindsym $mod+7 workspace $ws7
 bindsym $mod+8 workspace $ws8
 bindsym $mod+9 workspace $ws9
 bindsym $mod+m workspace $ws10
-bindsym F12 workspace $ws19
+# bindsym F12 workspace $ws19
 
 # Move focused container to workspace
 bindsym $mod+Ctrl+1 move container to workspace $ws1
@@ -245,13 +245,15 @@ for_window [class="Timeset-gui"] floating enable border normal
 for_window [class="(?i)virtualbox"] floating enable border normal
 for_window [class="Xfburn"] floating enable
 for_window [title="cuteSCAM"] floating enable border normal
+for_window [title="Ze Good Morning.*"] floating enable resize set 920 760
 # for_window [title="Signal"] floating enable
 # for_window [title="Telegram"] floating enable
 
 # Perform other actions for specific windows
 # move julia plots container up
-for_window [title="GKS QtTerm"] move up
-no_focus [title="GKS QtTerm"] 
+for_window [class="matplotlib"] move up
+for_window [class="gksqt"] floating enable move absolute position 1780 px 33 px resize set 780 630 
+
 
 # default floating size for specific applications
 # for_window [class="Termite"] floating enable
