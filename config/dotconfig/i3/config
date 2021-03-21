@@ -252,7 +252,7 @@ for_window [title="Ze Good Morning.*"] floating enable resize set 920 760
 # Perform other actions for specific windows
 # move julia plots container up
 for_window [class="matplotlib"] move up
-for_window [class="gksqt"] floating enable move absolute position 1780 px 33 px resize set 780 630 
+for_window [class="gksqt"] floating enable move absolute position 1782 px 62 px resize set 776 630 
 
 
 # default floating size for specific applications
