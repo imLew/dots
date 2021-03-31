@@ -240,20 +240,18 @@ for_window [class="qt5ct"] floating enable sticky enable border normal
 for_window [class="Qtconfig-qt4"] floating enable sticky enable border normal
 for_window [class="Simple-scan"] floating enable border normal
 for_window [class="(?i)System-config-printer.py"] floating enable border normal
-# for_window [class="Skype"] floating enable border normal
 for_window [class="Timeset-gui"] floating enable border normal
 for_window [class="(?i)virtualbox"] floating enable border normal
 for_window [class="Xfburn"] floating enable
 for_window [title="cuteSCAM"] floating enable border normal
 for_window [title="Ze Good Morning.*"] floating enable resize set 920 760
-# for_window [title="Signal"] floating enable
-# for_window [title="Telegram"] floating enable
 
-# Perform other actions for specific windows
+for_window [class="Guake"] move container to output primary
+
 # move julia plots container up
 for_window [class="matplotlib"] move up
-for_window [class="gksqt"] floating enable move absolute position 1782 px 62 px resize set 776 630 
-
+for_window [class="gksqt"] floating enable border none move absolute position 1794 px 62 px resize set 764 630 
+no_focus [class="gksqt"]
 
 # default floating size for specific applications
 # for_window [class="Termite"] floating enable
