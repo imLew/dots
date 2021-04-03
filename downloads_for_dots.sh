@@ -16,4 +16,4 @@ fi
 # install vim-plug
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 # download plugins found in vimrc
-/usr/bin/python "$DOTS/install_vim_plugins.py"
+# /usr/bin/python "$DOTS/install_vim_plugins.py"
