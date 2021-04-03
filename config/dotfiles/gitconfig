@@ -7,8 +7,10 @@
     co = "checkout"
     wt = "worktree"
     b = "branch"
-
+    hist = "log --graph --pretty='%h %an %ad : %s'"
 [core]
 	excludesFile = ~/.config/gitignore
 [pager]
 	branch = false
+    tag = false
+    stash = false
