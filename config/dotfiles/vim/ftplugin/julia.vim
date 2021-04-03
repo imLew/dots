@@ -50,7 +50,7 @@ vmap <F34> <Plug>SlimeRegionSend`>j
 vmap <F8> <Plug>SlimeRegionSend
 vmap <F9> <Plug>SlimeRegionSend
 vmap <F10> <Plug>SlimeRegionSend
-" imap <F10> <Esc>:call SendRegion("function")<CR>i
-" imap <F9> <Esc>:call SendRegion("paragraph")<CR>i
-" imap <F8> <Esc>:call SendRegion("line")<CR>i
+imap <F10> <Esc><F10>a
+imap <F9> <Esc><F9>a
+imap <F8> <Esc><F8>a
 " nmap <F7> :new \| silent! read !julia --project=~/Documents/BCCN_Master/SVGD-stuff/Thesis/flow-VI #<CR>
