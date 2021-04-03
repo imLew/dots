@@ -5,4 +5,4 @@ __pycache__/
 config/dotfiles/vim/autoload/
 config/dotfiles/vim/plugged/
 config/dotfiles/vim/undodir
-
+config/dotfiles/vim/spell/*.spl
