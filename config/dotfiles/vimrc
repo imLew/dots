@@ -43,7 +43,7 @@ if has("autocmd")
     autocmd FileType markdown setlocal ts=2 sts=2 sw=2 expandtab
     autocmd FileType sh setlocal ts=2 sts=2 sw=2 expandtab
     autocmd FileType typescript setlocal ts=2 sts=2 sw=2 expandtab
-    
+   
     " highlight during search but not after
     augroup vimrc-incsearch-highlight
       autocmd!
@@ -91,6 +91,13 @@ nnoremap Y y$
 nnoremap <c-e> 3<c-e>
 nnoremap <c-y> 3<c-y>
 
+" because C-a is tmux
+nnoremap <a-a> <c-a>
+nnoremap <a-x> <c-x>
+
+nnoremap <A-O> O<Esc>j
+nnoremap <A-o> o<Esc>k
+
 " remap * and # to highlight and only jump if the current word is the search
 " word and highlight is on
 function! StarJump(key)
@@ -135,8 +142,8 @@ nnoremap <Leader>w :w<CR>
 nnoremap <Leader>W :wa<CR>
 
 " cycle through buffers easily like tabs
-nnoremap gb :bn<CR>
-nnoremap gB :bp<CR>
+nnoremap gB :bn<CR>
+nnoremap gb :bp<CR>
 
 " open help in new tab
 " command! TABHELP tab help
@@ -183,11 +190,15 @@ call plug#begin()
     let g:vimtex_complete_enabled = 1
     " Disable custom warnings based on regexp
     let g:vimtex_quickfix_ignore_filters = [
-          \ 'while executing',
-          \ '\hbox',
-          \ 'Marginpar'
-          \]
+                \ 'while executing',
+                \ '\hbox',
+                \ 'Marginpar'
+                \]
     let g:vimtex_compiler_progname = 'nvr'
+    let g:vimtex_toc_config = {
+                \ 'hide_line_numbers' : 0,
+                \ 'fold_enable' : 1,
+                \ }
 
     Plug 'sirver/ultisnips'
     let g:UltiSnipsExpandTrigger = '<tab>'
@@ -198,7 +209,7 @@ call plug#begin()
 
     Plug 'vim-scripts/argtextobj.vim'
 
-    Plug 'tpope/vim-fugitive'
+    Plug 'tpope/vim-fugitive' " , { 'commit' : '9108971' }
     nnoremap <leader>G :Git 
 
     Plug 'tpope/vim-surround'
@@ -224,23 +235,23 @@ call plug#begin()
     Plug 'junegunn/fzf.vim'
     " redefine :Rg to also search git ignored files
     command! -bang -nargs=* Rg
-      \ call fzf#vim#grep(
-      \   'rg --column --line-number --no-heading --color=always --no-ignore 
-      \   --smart-case -- '.shellescape(<q-args>), 1,
-      \   fzf#vim#with_preview(), <bang>0)
+                \ call fzf#vim#grep(
+                \   'rg --column --line-number --no-heading --color=always --no-ignore 
+                \   --smart-case -- '.shellescape(<q-args>), 1,
+                \   fzf#vim#with_preview(), <bang>0)
     nmap <c-f> :Rg<CR>
-    silent! !git rev-parse --is-inside-work-tree
-    if v:shell_error == 0
-      noremap <C-p> :GFiles --cached --others --exclude-standard<CR>
-    else
-      noremap <C-p> :Files<CR>
-    endif
+    " silent! !git rev-parse --is-inside-work-tree
+    " if v:shell_error == 0
+    "   noremap <C-p> :GFiles --cached --others --exclude-standard<CR>
+    " else
+    noremap <C-p> :Files<CR>
+    " endif
     noremap <leader>b :Buffers<CR>
 
     Plug 'JuliaEditorSupport/julia-vim'
-    let g:latex_to_unicode_tab = 0
+    let g:latex_to_unicode_tab = 1
     let g:latex_to_unicode_auto = 1
-    let g:latex_to_unicode_keymap = 1
+    " let g:latex_to_unicode_keymap = 1
 
     Plug 'jpalardy/vim-slime'
     let g:slime_target = "tmux"
@@ -253,7 +264,8 @@ call plug#begin()
     set viewoptions=cursor,folds,slash,unix
     set viewoptions-=options
 
-    Plug 'luochen1990/rainbow'
+    Plug 'frazrepo/vim-rainbow'
+    " Plug 'luochen1990/rainbow'
     let g:rainbow_active = 1
 
     " Plug 'mushanyoung/vim-windflower'
@@ -278,7 +290,7 @@ colorscheme gruvbox-material
 highlight Comment cterm=None
 syntax on
 
-" autocmd FileType julia setlocal commentstring=##\ %s
+" autocmd FileType julia let b:commentary_format = "## %s"
 
 set exrc
 set secure
