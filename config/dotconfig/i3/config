@@ -250,7 +250,7 @@ for_window [class="Guake"] move container to output primary
 
 # move julia plots container up
 for_window [class="matplotlib"] move up
-for_window [class="gksqt"] floating enable border none move absolute position 1794 px 62 px resize set 764 630 
+for_window [class="gksqt"] floating enable border none move absolute position 1792 px 62 px resize set 767 630 
 no_focus [class="gksqt"]
 
 # default floating size for specific applications
