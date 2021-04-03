@@ -1,5 +1,13 @@
 snippet today "insert date" b
-`date +%F` 
+`date +"%A %Y-%m-%d"` 
+endsnippet
+
+snippet yesterday "insert yesterday's date" b
+`date -d @$(($(date +"%s")-86400)) +"%A %Y-%m-%d"`
+endsnippet
+
+snippet tomorrow "insert tomorrow's date" b
+`date -d @$(($(date +"%s")+86400)) +"%A %Y-%m-%d"`
 endsnippet
 
 snippet legday "leg day template" b

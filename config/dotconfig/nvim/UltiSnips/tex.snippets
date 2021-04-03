@@ -13,12 +13,20 @@ def math():
 		return False
 endglobal
 
-# snippet \beg "begin{} / end{}" bA
-# \begin{$1}
-# 	$2
-# \end{$1}
-# $0
-# endsnippet
+snippet "\\?ssub" "subsubsection" brA
+\subsection{$1}
+$0
+endsnippet
+
+snippet "\\?sub(section)?" "subsection" brA
+\subsection{$1}
+$0
+endsnippet
+
+snippet "\\?sec(tion)?" "section" brA
+\section{$1}
+$0
+endsnippet
 
 snippet mk "Math" wA
 $${1}$`!p
@@ -69,7 +77,7 @@ endsnippet
 snippet "\\?beg(in)?( (\S+))?" "begin{} / end{}" br
 \begin{${1:`!p
 snip.rv = match.group(3) if match.group(2) is not None else "something"`}}
-    ${2:${VISUAL}}
+	${2:${VISUAL}}
 \end{$1}$0
 endsnippet
 

@@ -1,0 +1,26 @@
+global !p
+from datetime import date
+endglobal
+
+snippet tomorrow_ "insert tomorrow's date and underline it" b
+`!p
+tomorrow = date.today().replace(day=date.today().day+1).strftime("%A %Y-%m-%d")
+snip.rv = tomorrow + "\n" + len(tomorrow)*"-"
+`
+endsnippet
+
+
+snippet yesterday_ "insert yesterday's date and underline it" b
+`!p
+yesterday = date.today().replace(day=date.today().day-1).strftime("%A %Y-%m-%d")
+snip.rv = yesterday + "\n" + len(yesterday)*"-"
+`
+endsnippet
+
+
+snippet today_ "insert date and underline it" b
+`!p
+today = date.today().strftime("%A %Y-%m-%d")
+snip.rv = today + "\n" + len(today)*"-"
+`
+endsnippet
